@@ -1,0 +1,3 @@
+targets:
+  jiazhenzhu: shared-us-west-2/cjb5wwwvz1r9s0100t6ty4lg8
+  default: jiazhenzhu

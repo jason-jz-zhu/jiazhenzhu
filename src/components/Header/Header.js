@@ -10,36 +10,33 @@ class Header extends Component {
     this.state = {
       isOpen: false,
     };
-    // this.toggle = this.toggle.bind(this);
+    this.toggle = this.toggle.bind(this);
   }
-  // toggle() {
-  //   this.setState({
-  //     isOpen: !this.state.isOpen,
-  //   });
-  // }
+  toggle() {
+    this.setState({
+      isOpen: !this.state.isOpen,
+    });
+  }
 
   render() {
     return (
       <header className="header">
-        <Navbar light toggleable>
-          <NavbarToggler right onClick={this.toggle} />
+        <Navbar light expand="md">
           <NavbarBrand className="brand" href="/">Jiazhen</NavbarBrand>
+          <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href="/">About</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="/process">Contact</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="/example">Works</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="/example">Blog</NavLink>
+                <NavLink href="/about">About</NavLink>
               </NavItem>
               <NavItem>
                 <NavLink href="/contact">Contact</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href="/work">Work</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href="/blog">Blog</NavLink>
               </NavItem>
             </Nav>
           </Collapse>

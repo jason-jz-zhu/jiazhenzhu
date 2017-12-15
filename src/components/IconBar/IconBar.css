@@ -1,0 +1,18 @@
+.iconWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content:flex-start;
+}
+
+.icon {
+  font-size: 16px;
+  line-height: 16px;
+  width: 16px;
+  height: 16px;
+  margin-right: 10px !important;
+}
+
+.icon a {
+  color: #373737 !important;
+}
+

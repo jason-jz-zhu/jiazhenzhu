@@ -1,42 +1,46 @@
 import React, { Component } from 'react';
-
 // import components
-import Header from '../../components/Header/Header';
-
+import BarChart from '../../components/D3/BarChart/BarChart';
+import IconBar from '../../components/IconBar/IconBar';
 // import class
 import './Home.css'
 
 class Home extends Component {
-
+  
   render() {
-
     const abstract = (
       <div className="HomeAbstractWrapper">
         <div className="textContainer">
           <h1 className="leftHeader">
-            <strong>
+            <strong className="jiazhen">
               I am Jiazhen Zhu.
             </strong>
           </h1>
           <h2 className="rightHeader">
-            I love&nbsp;
-            <span className="transparent">data engineering</span>,
-            <br />
-            <span className="transparent">data science</span>, and&nbsp;
-            <span className="transparent">data visualizations</span>.&nbsp;
-            <br />
-            I know how to tranfer raw data into visualizations
-            <br />
-            and make data more sense.
+            <div className="rightUpHeader">
+              I love&nbsp;
+              <span className="transparent">data engineering</span>,
+              <br />
+              <span className="transparent">data science</span>, and&nbsp;
+              <span className="transparent">data visualizations</span>.&nbsp;
+              <br />
+              I know how to tranfer raw data into visualizations
+              <br />
+              and make data more sense.
+            </div>
+            <div className="rightDownIconBar">
+              <IconBar />
+            </div>
           </h2>
+          
         </div>
       </div>
     )
 
     return (
       <div>
-        <Header />
         {abstract}
+        <BarChart data={[5,10,1,3]} size={[500,500]} />
       </div>
     );
   }

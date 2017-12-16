@@ -7,6 +7,7 @@ import About from './pages/About/About';
 import Contact from './pages/Contact/Contact';
 import Work from './pages/Work/Work';
 import Blog from './pages/Blog/Blog';
+import Resource from './pages/Resource/Resource';
 import { Switch, Route } from 'react-router-dom';
 
 class App extends Component {
@@ -20,6 +21,7 @@ class App extends Component {
           <Route exact path='/contact' component={Contact} />
           <Route exact path='/work' component={Work} />
           <Route exact path='/blog' component={Blog} />
+          <Route exact path='/resource' component={Resource} />
         </div>
       </div>
     );

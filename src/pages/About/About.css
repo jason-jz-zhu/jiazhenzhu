@@ -1,0 +1,19 @@
+/* about me */
+.aboutMeWrapper {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  height: 500px;
+  margin-bottom: 6px;
+  border-bottom: 1px solid #ddd;
+}
+
+
+.aboutMe {
+  width: 90%;
+  max-width: 1240px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 50px 1fr 1fr;
+  grid-template-rows: auto;
+  grid-gap: 20px;
+}

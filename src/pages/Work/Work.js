@@ -1,96 +1,50 @@
 import React, { Component } from 'react';
 import './Work.css';
 
+// import Component
+import Cards from '../../components/Cards/Cards';
+import Abstract from '../../components/Abstract/Abstract';
+
 class Work extends Component {
 
   render() {
-    const abstract = (
-      <div className="WorkAbstractWrapper">
-        <div className="textContainer">
-          <h1 className="leftHeader">
-            <strong className="jiazhen">
-              Project
-            </strong>
-          </h1>
-          <h2 className="rightHeader">
-            MY PERSONAL EXPERIMENTS & PROFESSIONAL WORK
-          </h2>
-        </div>
-      </div>
-    )
+    const cards_data = [
+      {
+        link: '',
+        image: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/flex-1.jpg',
+        title: '10 inspiring photos',
+        info: 'D3'
+      },
+      {
+        link: '',
+        image: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/flex-1.jpg',
+        title: '10 inspiring photos',
+        info: 'D3'
+      },
+      {
+        link: '',
+        image: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/flex-1.jpg',
+        title: '10 inspiring photos',
+        info: 'D3'
+      },
+      {
+        link: '',
+        image: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/flex-1.jpg',
+        title: '10 inspiring photos',
+        info: 'D3'
+      }
+    ];
+
+    const workAbstractData = {
+      left: "Project",
+      right: "MY PERSONAL EXPERIMENTS & PROFESSIONAL WORK"
+    }
+
     return (
       <div>
-        {abstract}
+        <Abstract data={workAbstractData} />
         <div className="cardsWrapper">
-          <div className="cards">
-
-
-            <div className="cardWrapper">
-
-              <a href="" className="card">
-                <div className="thumb" style={{backgroundImage: "url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/flex-1.jpg)"}}>
-                  <div className="titleContent">
-                    <h3>10 inspiring photos</h3>
-                  </div>
-                  <div className="cardInfo">
-                    D3
-                  </div>
-                  <div className="colorOverlay"></div>
-                </div>
-              </a>
-
-            </div>
-
-            <div className="cardWrapper">
-
-              <a href="" className="card">
-                <div className="thumb" style={{backgroundImage: "url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/flex-1.jpg)"}}>
-                  <div className="titleContent">
-                    <h3>10 inspiring photos</h3>
-                  </div>
-                  <div className="cardInfo">
-                    D3
-                  </div>
-                  <div className="colorOverlay"></div>
-                </div>
-              </a>
-
-            </div>
-
-            <div className="cardWrapper">
-
-              <a href="" className="card">
-                <div className="thumb" style={{backgroundImage: "url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/flex-1.jpg)"}}>
-                  <div className="titleContent">
-                    <h3>10 inspiring photos</h3>
-                  </div>
-                  <div className="cardInfo">
-                    D3
-                  </div>
-                  <div className="colorOverlay"></div>
-                </div>
-              </a>
-
-            </div>
-
-            <div className="cardWrapper">
-
-              <a href="" className="card">
-                <div className="thumb" style={{backgroundImage: "url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/flex-1.jpg)"}}>
-                  <div className="titleContent">
-                    <h3>10 inspiring photos</h3>
-                  </div>
-                  <div className="cardInfo">
-                    D3
-                  </div>
-                  <div className="colorOverlay"></div>
-                </div>
-              </a>
-
-            </div>
-
-
-          </div>
+          <Cards data={cards_data} />
         </div>
       </div>
     );

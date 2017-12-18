@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 // import components
-import BarChart from '../../components/D3/BarChart/BarChart';
 import RadialHistogram from '../../components/D3/RadialHistogram/RadialHistogram';
 import IconBar from '../../components/IconBar/IconBar';
 // import class

@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 // import components
 import BarChart from '../../components/D3/BarChart/BarChart';
+import RadialHistogram from '../../components/D3/RadialHistogram/RadialHistogram';
 import IconBar from '../../components/IconBar/IconBar';
 // import class
 import './Home.css'
 
 class Home extends Component {
-  
+
   render() {
     const abstract = (
       <div className="HomeAbstractWrapper">
@@ -32,7 +33,7 @@ class Home extends Component {
               <IconBar />
             </div>
           </h2>
-          
+
         </div>
       </div>
     )
@@ -40,7 +41,9 @@ class Home extends Component {
     return (
       <div>
         {abstract}
-        <BarChart data={[5,10,1,3]} size={[500,500]} />
+        <div className='chart'>
+          <RadialHistogram />
+        </div>
       </div>
     );
   }

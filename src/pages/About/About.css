@@ -1,19 +1,59 @@
-/* about me */
-.aboutMeWrapper {
+/* whoIAm */
+.whoIAmWrapper {
   margin-top: 50px;
   margin-bottom: 50px;
   height: 500px;
   margin-bottom: 6px;
   border-bottom: 1px solid #ddd;
+  font-family: sans-serif;
 }
 
-
-.aboutMe {
+.whoIAm {
   width: 90%;
+  height: 90%;
   max-width: 1240px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 50px 1fr 1fr;
   grid-template-rows: auto;
   grid-gap: 20px;
+}
+
+.whoIAm .title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-left: 3px solid #ddd;
+  font-style: italic;
+  font-size: 20px;
+}
+
+.whoIAm .title p {
+  flex: 1;
+  margin-top: 3em;
+  margin-bottom: 1em;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.leftContent {
+  position: relative;
+  font-size: 16px;
+  line-height: 26px;
+  width: 50%;
+  text-decoration: none;
+}
+
+.wantToBeWrapper {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  height: 500px;
+  margin-bottom: 6px;
+  border-bottom: 1px solid #ddd;
+  font-family: sans-serif;
+}
+
+.chart {
+  /* background-color: #c457be; */
 }

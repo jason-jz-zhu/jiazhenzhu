@@ -22,12 +22,25 @@ class About extends Component {
     return (
       <div>
         <Abstract data={aboutAbstractData} />
-        <div className="aboutMeWrapper">
-          <div className="aboutMe">
-            <div>one</div>
-            <div>two</div>
-            <div>three</div>
+        <div className="whoIAmWrapper">
+          <div className="whoIAm">
+            <div className="title">
+              <p>Who</p>
+              <p>am</p>
+              <p>I</p>
+            </div>
+            <div className="leftContent">
+              <p>
+                xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+              </p>
+
+            </div>
+            <div className="rightContent">three</div>
           </div>
+        </div>
+        <div className="wantToBeWrapper">
+          WHO I WANT TO BE
         </div>
       </div>
     );

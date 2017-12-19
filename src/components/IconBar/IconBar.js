@@ -13,17 +13,17 @@ class IconBar extends Component {
         </div>
 
         <div className="icon">
-          <a href="https://www.linkedin.com/in/jiazhen-zhu-78a46632/" target="_blank">
+          <a href="https://github.com/jason-jz-zhu" target="_blank">
             <i className="fa fa-github" aria-hidden="true"></i>
           </a>
         </div>
         <div className="icon">
-          <a href="https://www.linkedin.com/in/jiazhen-zhu-78a46632/" target="_blank">
+          <a href="mailto:jason.jz.zhu@gmail.com">
             <i className="fa fa-envelope" aria-hidden="true"></i>
           </a>
         </div>
         <div className="icon">
-          <a href="https://www.linkedin.com/in/jiazhen-zhu-78a46632/" target="_blank">
+          <a href="https://www.pinterest.com/jiazhenzhu16/" target="_blank">
             <i className="fa fa-pinterest-p" aria-hidden="true"></i>
           </a>
         </div>

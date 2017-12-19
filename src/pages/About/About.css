@@ -1,5 +1,5 @@
 /* whoIAm */
-.whoIAmWrapper {
+.aboutMeWrapper {
   margin-top: 50px;
   margin-bottom: 50px;
   height: 500px;
@@ -8,42 +8,54 @@
   font-family: sans-serif;
 }
 
-.whoIAm {
-  width: 90%;
+.aboutMe {
+  width: 100%;
   height: 90%;
   max-width: 1240px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 50px 40% 40%;
+  grid-template-columns: 75px 40% 40% 75px;
   grid-template-rows: auto;
-  grid-gap: 20px;
+  grid-gap: 25px;
 }
 
-.whoIAm .title {
+.aboutMe .title {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-left: 3px solid #ddd;
   font-style: italic;
   font-size: 20px;
+  padding-right: 10px;
 }
 
-.whoIAm .title p {
+.aboutMe .leftTitle {
+  border-right: 3px solid #ddd;
+}
+
+.aboutMe .rightTitle {
+  border-left: 3px solid #ddd;
+}
+
+.aboutMe .title p {
   flex: 1;
-  margin-top: 3em;
+  margin-top: 1em;
   margin-bottom: 1em;
   margin-left: 0;
   margin-right: 0;
 }
 
-.leftContent {
-  position: relative;
-  font-size: 16px;
+.content {
   line-height: 26px;
-  /* width: 50%; */
   text-decoration: none;
   word-wrap: break-word;
+}
+
+.content p {
+  font-family: "Akkurat Mono",-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Helvetica,sans-serif !important;
+  font-size: 14px;
+  font-weight: 400;
+  text-align: left;
 }
 
 .wantToBeWrapper {
@@ -55,6 +67,18 @@
   font-family: sans-serif;
 }
 
-.chart {
-  /* background-color: #c457be; */
+.underLine {
+  border-bottom: 3px solid rgba(141,132,130,.3);
 }
+
+.textLink {
+  color: hotpink;
+  text-decoration: none !important;
+  border-bottom: black 1px dashed;
+}
+
+.textTransparent {
+  background-color: rgba(141,132,130,.3);
+  padding: .5px;
+}
+

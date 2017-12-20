@@ -43,7 +43,6 @@
   letter-spacing: 1px;
   font-style: normal;
   height: 100%;
-  
   display: flex;
   flex-direction: column;
   justify-content:flex-end;
@@ -68,4 +67,15 @@
   flex-direction: column;
   justify-content: flex-end;
   margin-top: 26px;
+}
+
+.chart {
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 50px;
+}
+
+.cardsWrapper {
+  margin-top: 50px;
+  padding-bottom: 50px;
+  border-bottom: 1px solid #ddd;
 }

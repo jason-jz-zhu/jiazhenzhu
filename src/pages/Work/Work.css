@@ -1,3 +1,5 @@
 .cardsWrapper {
   margin-top: 50px;
+  padding-bottom: 50px;
+  border-bottom: 1px solid #ddd;
 }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import * as d3 from 'd3';
 import "d3-selection-multi";
-
+import './RadialHistogram.css';
 
 class RadialHistogram extends Component {
 
@@ -17,19 +17,21 @@ class RadialHistogram extends Component {
    }
 
    createRadialHistogram() {
-      const data = [{category: 'Data Science', subcategory: 'Descriptive Analysis', point: 4}, 
-              {category: 'Data Science', subcategory: 'Predictive Analysis', point: 3},
-              {category: 'Data Science', subcategory: 'Prescriptive Analysis', point: 2},
+      const data = [{category: 'AXIS', subcategory: 'AXIS', point: 5},
               {category: 'Data Engineering', subcategory: 'ETL', point: 5},
               {category: 'Data Engineering', subcategory: 'Big Data', point: 4},
               {category: 'Data Engineering', subcategory: 'Algroithms', point: 5},
               {category: 'Data Engineering', subcategory: 'Data Warehouse/Database', point: 5},
+              {category: 'Data Science', subcategory: 'Descriptive Analysis', point: 4},
+              {category: 'Data Science', subcategory: 'Predictive Analysis', point: 3},
+              {category: 'Data Science', subcategory: 'Prescriptive Analysis', point: 3},
               {category: 'Data Visualization', subcategory: 'UX/UI', point: 3},
               {category: 'Data Visualization', subcategory: 'Data Art', point: 3},
               {category: 'Data Visualization', subcategory: 'Storytelling', point: 3},
               {category: 'Data Visualization', subcategory: 'Storytelling', point: 3},
               {category: 'Web Development', subcategory: 'Front-End', point: 4},
               {category: 'Web Development', subcategory: 'Back-End', point: 4}]
+
       const uniqueCategory = [...new Set(data.map(m => m.category))]
       console.log(uniqueCategory);
       const node = this.refs.radialhistogram
@@ -37,7 +39,10 @@ class RadialHistogram extends Component {
       const RHLenScale = d3.scaleLinear().domain([0, 5]).range([10, 200])
       const RHColorScale = d3.scaleOrdinal()
                             .domain(uniqueCategory)
-                            .range(['#a0c1e3', '#c457be', '#d0ac2f', '#8d8482'])
+                            .range(['#fff', '#a0c1e3', '#c457be', '#d0ac2f', '#8d8482'])
+      const rAxisSmall = d3.axisRight(RHLenScale).tickValues([2, 4]).tickPadding(6).tickSize(2);
+      const rAxisLarge = d3.axisRight(RHLenScale).tickValues([1, 3, 5]).tickSize(6);
+      // main
       svg.append('svg:g')
         .attr('class', 'main')
         .selectAll('rect')
@@ -50,7 +55,20 @@ class RadialHistogram extends Component {
         .attr('transform', (d, i) => `rotate(${i / data.length * 360}, 400, 200)`)
         .style('fill', d => RHColorScale(d.category))
         .style('opacity', 0.35);
-      
+
+      // r axis
+      svg.append('g')
+        .attr('class', 'rAxisSmall')
+        .attr('transform', 'translate(400, 200)')
+        .call(rAxisSmall);
+      d3.select('.rAxisSmall').select('.domain').remove();
+
+      svg.append('g')
+        .attr('class', 'rAxisLarge')
+        .attr('transform', 'translate(398, 200)')
+        .call(rAxisLarge);
+      d3.select('.rAxisLarge').select('.domain').remove();
+
       // legend
       const legend = svg.append('svg:g').attr('class', 'legend')
       // legend - bar
@@ -77,7 +95,7 @@ class RadialHistogram extends Component {
         .attr('transform', (d, i) => `translate(730, ${i * 30 + 45})`)
         .text(d => d)
         .style('fill', d => RHColorScale(d));
-        
+
 
 
   }

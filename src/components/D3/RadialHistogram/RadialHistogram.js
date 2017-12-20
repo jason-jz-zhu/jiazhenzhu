@@ -17,7 +17,7 @@ class RadialHistogram extends Component {
    }
 
    createRadialHistogram() {
-      const data = [{category: 'AXIS', subcategory: 'AXIS', point: 5},
+      const data = [
               {category: 'Data Engineering', subcategory: 'ETL', point: 5},
               {category: 'Data Engineering', subcategory: 'Big Data', point: 4},
               {category: 'Data Engineering', subcategory: 'Algroithms', point: 5},
@@ -32,8 +32,10 @@ class RadialHistogram extends Component {
               {category: 'Web Development', subcategory: 'Front-End', point: 4},
               {category: 'Web Development', subcategory: 'Back-End', point: 4}]
 
-      const uniqueCategory = [...new Set(data.map(m => m.category))]
-      console.log(uniqueCategory);
+      let rAxisFlag = true
+      const axisData = [{category: 'AXIS', subcategory: 'AXIS', point: 5}, ...data]
+      const uniqueCategory = [...new Set(axisData.map(m => m.category))]
+      console.log(axisData);
       const node = this.refs.radialhistogram
       const svg = d3.select(node)
       const RHLenScale = d3.scaleLinear().domain([0, 5]).range([10, 200])
@@ -46,24 +48,27 @@ class RadialHistogram extends Component {
       svg.append('svg:g')
         .attr('class', 'main')
         .selectAll('rect')
-        .data(data)
+        .data(axisData)
         .enter()
         .append('rect')
         .attr('class', 'mainRect')
         .attrs({ x: 400, y: 200, width: 15, rx: 7.5, ry: 7.5 })
         .attr('height', (d) => RHLenScale(d.point))
-        .attr('transform', (d, i) => `rotate(${i / data.length * 360}, 400, 200)`)
+        .attr('transform', (d, i) => `rotate(${i / axisData.length * 360}, 400, 200)`)
         .style('fill', d => RHColorScale(d.category))
         .style('opacity', 0.35);
 
       // r axis
-      svg.append('g')
+      const rAxis = svg.append('g')
+        .attr('class', 'rAxis')
+
+      rAxis.append('g')
         .attr('class', 'rAxisSmall')
         .attr('transform', 'translate(400, 200)')
         .call(rAxisSmall);
       d3.select('.rAxisSmall').select('.domain').remove();
 
-      svg.append('g')
+      rAxis.append('g')
         .attr('class', 'rAxisLarge')
         .attr('transform', 'translate(398, 200)')
         .call(rAxisLarge);
@@ -96,7 +101,61 @@ class RadialHistogram extends Component {
         .text(d => d)
         .style('fill', d => RHColorScale(d));
 
+      // remove or add r axis
+      svg.append('g')
+        .append('rect')
+        .attrs({ x: 0, y: 0, height: 20, width: 20})
+        .attr('transform', 'translate(700, 30)')
+        .style('fill', '#5cb85c')
+        .on('click', () => {
+          if (rAxisFlag === true) {
+            const noAxisData = axisData.slice(1, axisData.length + 1)
+            updateOneRadialHistogram(noAxisData)
+            rAxisFlag = false
+          } else {
+            updateOneRadialHistogram(axisData)
+            rAxisFlag = true
+          }
+        });
 
+      const updateOneRadialHistogram = (inputData) => {
+        const mainRect = d3.select('.main').selectAll('rect').data(inputData)
+        // update
+        mainRect.transition()
+          .duration(500)
+          .attrs({ x: 400, y: 200, width: 15, rx: 7.5, ry: 7.5 })
+          .attr('height', (d) => RHLenScale(d.point))
+          .attr('transform', (d, i) => `rotate(${i / inputData.length * 360}, 400, 200)`)
+          .style('fill', d => RHColorScale(d.category))
+          .style('opacity', 0.35);
+        // enter
+        mainRect.enter()
+          .append('rect')
+          .attr('class', 'mainRect')
+          .attrs({ x: 400, y: 200, width: 15, rx: 7.5, ry: 7.5 })
+          .attr('height', (d) => RHLenScale(d.point))
+          .style('fill', d => RHColorScale(d.category))
+          .style('opacity', 0.35)
+          .transition()
+          .duration(500)
+          .attr('transform', (d, i) => `rotate(${i / inputData.length * 360}, 400, 200)`);
+        // exit
+        mainRect.exit().transition().remove();
+      }
+
+    const createRAxis = () => {
+      rAxis.append('g')
+        .attr('class', 'rAxisSmall')
+        .attr('transform', 'translate(400, 200)')
+        .call(rAxisSmall);
+      d3.select('.rAxisSmall').select('.domain').remove();
+
+      rAxis.append('g')
+        .attr('class', 'rAxisLarge')
+        .attr('transform', 'translate(398, 200)')
+        .call(rAxisLarge);
+      d3.select('.rAxisLarge').select('.domain').remove();
+    }
 
   }
   render() {

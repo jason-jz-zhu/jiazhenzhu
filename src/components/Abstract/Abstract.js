@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import './Abstract.css';
 
 class Abstract extends Component {
-
   render() {
-
     const abstract = (
       <div className="abstractWrapper">
         <div className="textContainer">
@@ -18,7 +16,7 @@ class Abstract extends Component {
           </h2>
         </div>
       </div>
-    )
+    );
 
     return (
       <div>

@@ -3,18 +3,18 @@ import './Contact.css';
 import Abstract from '../../components/Abstract/Abstract';
 
 class Contact extends Component {
-
   render() {
-    const right = (
+    const rightHTML = (
       <div>
         WE CAN WORK TOGETHER
       </div>
-    )
+    );
 
     const aboutAbstractData = {
-      left: "Contact Me",
-      right: right
-    }
+      left: 'Contact Me',
+      right: rightHTML,
+    };
+
     return (
       <div>
         <Abstract data={aboutAbstractData} />

@@ -33,9 +33,9 @@ class RadialHistogram extends Component {
               {category: 'Web Development', subcategory: 'Back-End', point: 4}]
 
       let rAxisFlag = true
+      const processBarFlag = [false, false, false]
       const axisData = [{category: 'AXIS', subcategory: 'AXIS', point: 5}, ...data]
       const uniqueCategory = [...new Set(axisData.map(m => m.category))]
-      console.log(axisData);
       const node = this.refs.radialhistogram
       const svg = d3.select(node)
       const RHLenScale = d3.scaleLinear().domain([0, 5]).range([10, 200])
@@ -44,14 +44,72 @@ class RadialHistogram extends Component {
                             .range(['#fff', '#a0c1e3', '#c457be', '#d0ac2f', '#8d8482'])
       const rAxisSmall = d3.axisRight(RHLenScale).tickValues([2, 4]).tickPadding(6).tickSize(2);
       const rAxisLarge = d3.axisRight(RHLenScale).tickValues([1, 3, 5]).tickSize(6);
-      // main
+
+      const createRAxis = (rAxisSmall, rAxisLarge) => {
+        // select rAxis dom
+        const rAxis = d3.select('.rAxisWrapper');
+
+        rAxis.append('g')
+          .attr('class', 'rAxisSmall')
+          .attr('transform', 'translate(400, 200)')
+          .call(rAxisSmall);
+        d3.select('.rAxisSmall').select('.domain').remove();
+
+        rAxis.append('g')
+          .attr('class', 'rAxisLarge')
+          .attr('transform', 'translate(398, 200)')
+          .call(rAxisLarge);
+        d3.select('.rAxisLarge').select('.domain').remove();
+      }
+
+      const removeRAxis = () => {
+        d3.select('.rAxisSmall').remove();
+        d3.select('.rAxisLarge').remove();
+      }
+
+      const createProcessBar = () => {
+        const processBarWrapper = d3.select('.processBarWrapper');
+
+        processBarWrapper.selectAll('circle')
+          .data([1, 2, 3])
+          .enter()
+          .append('circle')
+          .attr('class', (d) => `processBar${d}`)
+          .attr('r', 15)
+          .style('stroke', 'gray')
+          .style('stroke-opacity', 0.5)
+          .style('fill', 'white')
+          .attr('transform', (d, i) => `translate(${450 + i * 50}, 30)`)
+          .on('click', (d) => {
+            if (processBarFlag[d - 1] === false) {
+              d3.select(`.processBar${d}`)
+                .transition()
+                .duration(500)
+                .style('fill', 'dodgerblue');
+              processBarFlag[d - 1] = true
+            } else if (processBarFlag[d - 1] === true) {
+              d3.select(`.processBar${d}`)
+                .transition()
+                .duration(500)
+                .style('fill', 'white');
+              processBarFlag[d - 1] = false;
+            }
+
+          })
+      }
+
+      // process bar
+      svg.append('svg:g')
+        .attr('class', 'processBarWrapper')
+      createProcessBar();
+      // main rect
       svg.append('svg:g')
         .attr('class', 'main')
         .selectAll('rect')
         .data(axisData)
         .enter()
         .append('rect')
-        .attr('class', 'mainRect')
+        .attr('class', (d) => `mainRect${d.category.replace(/\s/g, '')}`)
         .attrs({ x: 400, y: 200, width: 15, rx: 7.5, ry: 7.5 })
         .attr('height', (d) => RHLenScale(d.point))
         .attr('transform', (d, i) => `rotate(${i / axisData.length * 360}, 400, 200)`)
@@ -60,22 +118,12 @@ class RadialHistogram extends Component {
 
       // r axis
       const rAxis = svg.append('g')
-        .attr('class', 'rAxis')
+        .attr('class', 'rAxisWrapper')
 
-      rAxis.append('g')
-        .attr('class', 'rAxisSmall')
-        .attr('transform', 'translate(400, 200)')
-        .call(rAxisSmall);
-      d3.select('.rAxisSmall').select('.domain').remove();
-
-      rAxis.append('g')
-        .attr('class', 'rAxisLarge')
-        .attr('transform', 'translate(398, 200)')
-        .call(rAxisLarge);
-      d3.select('.rAxisLarge').select('.domain').remove();
+      createRAxis(rAxisSmall, rAxisLarge);
 
       // legend
-      const legend = svg.append('svg:g').attr('class', 'legend')
+      const legend = svg.append('svg:g').attr('class', 'legendWrapper')
       // legend - bar
       legend.append('svg:g')
         .attr('class', 'legendRectWrapper')
@@ -109,12 +157,14 @@ class RadialHistogram extends Component {
         .style('fill', '#5cb85c')
         .on('click', () => {
           if (rAxisFlag === true) {
-            const noAxisData = axisData.slice(1, axisData.length + 1)
-            updateOneRadialHistogram(noAxisData)
-            rAxisFlag = false
+            removeRAxis();
+            const noAxisData = axisData.slice(1, axisData.length + 1);
+            updateOneRadialHistogram(noAxisData);
+            rAxisFlag = false;
           } else {
-            updateOneRadialHistogram(axisData)
-            rAxisFlag = true
+            updateOneRadialHistogram(axisData);
+            createRAxis(rAxisSmall, rAxisLarge);
+            rAxisFlag = true;
           }
         });
 
@@ -131,7 +181,7 @@ class RadialHistogram extends Component {
         // enter
         mainRect.enter()
           .append('rect')
-          .attr('class', 'mainRect')
+          .attr('class', (d) => `mainRect${d.category.replace(/\s/g, '')}`)
           .attrs({ x: 400, y: 200, width: 15, rx: 7.5, ry: 7.5 })
           .attr('height', (d) => RHLenScale(d.point))
           .style('fill', d => RHColorScale(d.category))
@@ -143,21 +193,10 @@ class RadialHistogram extends Component {
         mainRect.exit().transition().remove();
       }
 
-    const createRAxis = () => {
-      rAxis.append('g')
-        .attr('class', 'rAxisSmall')
-        .attr('transform', 'translate(400, 200)')
-        .call(rAxisSmall);
-      d3.select('.rAxisSmall').select('.domain').remove();
 
-      rAxis.append('g')
-        .attr('class', 'rAxisLarge')
-        .attr('transform', 'translate(398, 200)')
-        .call(rAxisLarge);
-      d3.select('.rAxisLarge').select('.domain').remove();
-    }
 
   }
+
   render() {
         return <svg ref='radialhistogram' width={1000} height={500}></svg>
      }

@@ -5,7 +5,7 @@ class Resource extends Component {
   render() {
     return (
       <div>
-        Resource
+        Resource: coming soon!
       </div>
     );
   }

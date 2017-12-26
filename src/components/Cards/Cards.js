@@ -11,7 +11,7 @@ class Cards extends Component {
               <h3>{itemList.title}</h3>
             </div>
             <div className="cardInfo">
-              D3
+              {itemList.info}
             </div>
             <div className="colorOverlay" />
           </div>

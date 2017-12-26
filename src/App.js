@@ -9,6 +9,8 @@ import Contact from './pages/Contact/Contact';
 import Work from './pages/Work/Work';
 import Blog from './pages/Blog/Blog';
 import Resource from './pages/Resource/Resource';
+import CrimeAnalysis from './pages/Work/Projects/CrimeAnalysis/CrimeAnalysis';
+import Homeless from './pages/Work/Projects/Homeless/Homeless';
 
 
 class App extends Component {
@@ -21,6 +23,8 @@ class App extends Component {
           <Route exact path="/about" component={About} />
           <Route exact path="/contact" component={Contact} />
           <Route exact path="/work" component={Work} />
+          <Route exact path="/work/crimeanalysis" component={CrimeAnalysis} />
+          <Route exact path="/work/homeless" component={Homeless} />
           <Route exact path="/blog" component={Blog} />
           <Route exact path="/resource" component={Resource} />
         </div>

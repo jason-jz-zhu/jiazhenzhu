@@ -39,13 +39,13 @@ class RadialHistogram extends Component {
         category: 'Data Science', subcategory: 'Prescriptive Analysis', point: 3, description: 'Give an Effective Method',
       },
       {
+        category: 'Data Science', subcategory: 'Machine Learning', point: 3, description: 'Machine Learning',
+      },
+      {
         category: 'Data Visualization', subcategory: 'UX/UI', point: 3, description: 'User Experience',
       },
       {
         category: 'Data Visualization', subcategory: 'Data Art', point: 3, description: 'Art',
-      },
-      {
-        category: 'Data Visualization', subcategory: 'Storytelling', point: 3, description: 'Good Story',
       },
       {
         category: 'Data Visualization', subcategory: 'Storytelling', point: 3, description: 'Good Story',
@@ -242,9 +242,6 @@ class RadialHistogram extends Component {
       .text(d => d)
       .style('fill', d => RHColorScale(d));
 
-    // d3.select('.arrow')
-    //   .style('top', '468px')
-    //   .style('left', '570px');
     // remove or add r axis
     svg.append('g')
       .append('rect')
@@ -253,20 +250,20 @@ class RadialHistogram extends Component {
         x: 0, y: 0, height: 30, width: 30, rx: 15, ry: 15,
       })
       .attr('transform', 'translate(690, 30)')
-      .style('fill', 'rgba(151,131,130,0.7)')
+      .style('fill', 'rgba(238,114,114,0.7)')
       .on('click', () => {
         if (rAxisFlag === true) {
           removeRAxis();
           const noAxisData = axisData.slice(1, axisData.length + 1);
           updateOneRadialHistogram(noAxisData);
           d3.select('.removeRAxisButton')
-            .style('fill', 'rgba(151,131,130,0.3)');
+            .style('fill', 'rgba(238,114,114,0.3)');
           rAxisFlag = false;
         } else {
           updateOneRadialHistogram(axisData);
           createRAxis(rAxisSmall, rAxisLarge);
           d3.select('.removeRAxisButton')
-            .style('fill', 'rgba(151,131,130,0.7)');
+            .style('fill', 'rgba(238,114,114,0.7)');
           rAxisFlag = true;
         }
       });

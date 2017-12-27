@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { Collapse, Navbar, NavbarToggler, NavbarBrand,
   Nav, NavItem, NavLink } from 'reactstrap';
 import './Header.css';
+import Logo from '../D3/Logo/Logo';
 
 class Header extends Component {
   constructor(props) {
@@ -22,7 +23,9 @@ class Header extends Component {
     return (
       <header className="header">
         <Navbar light expand="md">
-          <NavbarBrand className="brand" href="/">Jiazhen</NavbarBrand>
+          <NavbarBrand className="brand" href="/">
+            <Logo />
+          </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>

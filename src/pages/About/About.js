@@ -32,10 +32,10 @@ class About extends Component {
               <p>
                 I am a <span className="textTransparent">Data Engineer</span> and&nbsp;
                 <span className="textTransparent">Data Scientist</span>.
-                Around 2013, I came to USA to start my graduate education.
+                Around 2013, I came to USA and begin my graduate education.
                 I used 1.5 years to finish my master degree for computer science
                 at the George Washington University and join the my current job at NETE.
-                Before I came to USA, I worked for CITI/CSC and PWC at Shanghai CHINA about 2 years.
+                Before I came to USA, I worked at CITI/CSC and PWC about 2 years at Shanghai CHINA.
               </p>
               <p>
                 When I touch with the new word <span className="underLine">data science</span>&nbsp;
@@ -53,20 +53,20 @@ class About extends Component {
                 and feeling to everyone who love data.
               </p>
               <p>
-                I firmly believe that data can change decision of peole and the world also.
+                I firmly believe that data can change decision of people and the world also.
               </p>
             </div>
             <div className="content">
               <p>
                 To be a <span className="textTransparent">Full Stack Data Scientist</span> is
-                what I want to be in the near future hopefully.
+                what I want to be in the near future.
                 Data Science combiness mathematics, statistics, information science,
-                and computer science together. There is a funny story that I want to
+                and computer science together. There is a funny story - I want to
                 be a best computer scientiest in the statistics area,
                 I want to be a best statistician in the computer sicence area.
               </p>
               <p>
-                I have a lot of interested idea in my daily life.
+                I have a lot of interested ideas in my daily life.
                 For example, resume can be presented by data visualizations,
                 how can we use data science knowledge to improve profit of small restaurant?
                 and sharing our todolist in order to help and get help from others.

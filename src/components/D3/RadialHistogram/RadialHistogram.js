@@ -57,9 +57,10 @@ class RadialHistogram extends Component {
         category: 'Web Development', subcategory: 'Back-End', point: 4, description: 'Calculate Data for Web',
       }];
 
-    let rAxisFlag = true;
+    let rAxisFlag = false;
     // const processBarFlag = [false, false, false];
     const axisData = [{ category: 'AXIS', subcategory: 'AXIS', point: 5 }, ...data];
+    const noAxisData = axisData.slice(1, axisData.length + 1);
     const uniqueCategory = [...new Set(axisData.map(m => m.category))];
     const node = this.radialhistogram;
     const svg = d3.select(node);
@@ -193,7 +194,7 @@ class RadialHistogram extends Component {
     svg.append('svg:g')
       .attr('class', 'main')
       .selectAll('rect')
-      .data(axisData)
+      .data(noAxisData)
       .enter()
       .append('rect')
       .attr('class', d => `mainRect${d.category.replace(/\s/g, '')}`)
@@ -201,7 +202,7 @@ class RadialHistogram extends Component {
         x: 400, y: 200, width: 15, rx: 7.5, ry: 7.5,
       })
       .attr('height', d => RHLenScale(d.point))
-      .attr('transform', (d, i) => `rotate(${(i / axisData.length) * 360}, 400, 200)`)
+      .attr('transform', (d, i) => `rotate(${(i / noAxisData.length) * 360}, 400, 200)`)
       .style('fill', d => RHColorScale(d.category))
       .style('opacity', 0.35)
       .on('mouseover', d => showTooltip(d))
@@ -210,8 +211,6 @@ class RadialHistogram extends Component {
     // r axis
     svg.append('g')
       .attr('class', 'rAxisWrapper');
-
-    createRAxis(rAxisSmall, rAxisLarge);
 
     // legend
     const legend = svg.append('svg:g').attr('class', 'legendWrapper');
@@ -254,14 +253,13 @@ class RadialHistogram extends Component {
       .on('click', () => {
         if (rAxisFlag === true) {
           removeRAxis();
-          const noAxisData = axisData.slice(1, axisData.length + 1);
           updateOneRadialHistogram(noAxisData);
           d3.select('.removeRAxisButton')
             .style('fill', 'rgba(238,114,114,0.3)');
           rAxisFlag = false;
         } else {
-          updateOneRadialHistogram(axisData);
           createRAxis(rAxisSmall, rAxisLarge);
+          updateOneRadialHistogram(axisData);
           d3.select('.removeRAxisButton')
             .style('fill', 'rgba(238,114,114,0.7)');
           rAxisFlag = true;

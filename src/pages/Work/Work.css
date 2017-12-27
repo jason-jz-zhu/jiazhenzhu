@@ -3,3 +3,17 @@
   padding-bottom: 50px;
   border-bottom: 1px solid #ddd;
 }
+
+ul {
+  list-style-type: none;
+  text-align: center;
+}
+
+li {
+  display: inline;
+}
+
+.cardFilterWrapper a {
+  text-decoration: none;
+  padding: 0.2em 0.6em;
+}

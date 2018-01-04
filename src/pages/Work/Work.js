@@ -5,7 +5,20 @@ import Cards from '../../components/Cards/Cards';
 import Abstract from '../../components/Abstract/Abstract';
 
 class Work extends Component {
-  render() {
+  constructor(props) {
+    super(props);
+    this.state = {
+      rawCardsData: [],
+      cardsData: [],
+      filterList: ['All', 'D3.js', 'Tableau', 'Machine Learning', 'Airflow'],
+    };
+  }
+
+  componentWillMount() {
+    this.initData();
+  }
+
+  initData = () => {
     const cardsData = [
       {
         id: 1,
@@ -36,17 +49,35 @@ class Work extends Component {
         info: 'D3',
       },
     ];
+    this.setState({
+      rawCardsData: cardsData,
+      cardsData,
+    });
+  }
 
+  filter = (e) => {
+    console.log(e.target.innerHTML);
+  }
+
+  render() {
     const workAbstractData = {
       left: 'Project',
       right: 'MY PERSONAL EXPERIMENTS & PROFESSIONAL WORK',
     };
-
     return (
       <div>
         <Abstract data={workAbstractData} />
+        <nav className="filterWrapper">
+          <ul>
+            <li><a href="#" onClick={this.filter}>All</a></li>
+            <li><a>D3.js</a></li>
+            <li><a>Tableau</a></li>
+            <li><a>Machine Learning</a></li>
+            <li><a>Airflow</a></li>
+          </ul>
+        </nav>
         <div className="cardsWrapper">
-          <Cards data={cardsData} />
+          <Cards data={this.state.cardsData} />
         </div>
       </div>
     );

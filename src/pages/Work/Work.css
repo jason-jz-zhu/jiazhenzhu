@@ -4,16 +4,31 @@
   border-bottom: 1px solid #ddd;
 }
 
-ul {
+.filterWrapper {
+  margin-top: 35px;
+}
+
+.filterWrapper ul {
   list-style-type: none;
   text-align: center;
 }
 
-li {
-  display: inline;
+.filterWrapper li {
+  display: inline-block;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
 }
 
-.cardFilterWrapper a {
-  text-decoration: none;
+.filterWrapper li a {
+  color: rgba(46,46,46,0.6) !important;
+  font-size: 13px;
+  font-family: 'Open Sans',sans-serif !important;
+  margin: 0 15px;
   padding: 0.2em 0.6em;
+  text-decoration: none;
+}
+
+.filterWrapper li a:hover {
+  color: rgba(46,46,46);
 }

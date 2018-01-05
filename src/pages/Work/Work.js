@@ -39,14 +39,14 @@ class Work extends Component {
         link: '/',
         image: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/flex-1.jpg',
         title: 'Coming Soon!',
-        info: 'D3',
+        info: 'D3.js',
       },
       {
         id: 4,
         link: '/',
         image: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/flex-1.jpg',
         title: 'Coming Soon!',
-        info: 'D3',
+        info: 'D3.js',
       },
     ];
     this.setState({
@@ -56,7 +56,15 @@ class Work extends Component {
   }
 
   filter = (e) => {
-    console.log(e.target.innerHTML);
+    const target = e.target.innerHTML;
+    let newCardsData = [];
+    if (target === 'All') {
+      newCardsData = this.state.rawCardsData;
+    } else {
+      newCardsData = this.state.rawCardsData
+        .filter(card => card.info === target);
+    }
+    this.setState({ cardsData: newCardsData });
   }
 
   render() {
@@ -69,11 +77,11 @@ class Work extends Component {
         <Abstract data={workAbstractData} />
         <nav className="filterWrapper">
           <ul>
-            <li><a href="#" onClick={this.filter}>All</a></li>
-            <li><a>D3.js</a></li>
-            <li><a>Tableau</a></li>
-            <li><a>Machine Learning</a></li>
-            <li><a>Airflow</a></li>
+            {this.state.filterList.map(item => (
+              <li key={item}>
+                <a href="#" onClick={this.filter}>{item}</a>
+              </li>
+            ))}
           </ul>
         </nav>
         <div className="cardsWrapper">

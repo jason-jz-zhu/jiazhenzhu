@@ -60,16 +60,13 @@ class Logo extends Component {
     const axisData = [{ category: 'AXIS', subcategory: 'AXIS', point: 5 }, ...data];
     const noAxisData = axisData.slice(1, axisData.length + 1);
     const uniqueCategory = [...new Set(axisData.map(m => m.category))];
-    const node = this.logo;
-    const svg = d3.select(node);
+    const svg = d3.select(this.logo);
     const RHLenScale = d3.scaleLinear().domain([0, 5]).range([5, 30]);
     const RHColorScale = d3.scaleOrdinal()
       .domain(uniqueCategory)
       .range(['#fff', '#a0c1e3', '#c457be', '#d0ac2f', '#8d8482']);
 
-    svg.append('svg:g')
-      .attr('class', 'logoMain')
-      .selectAll('rect')
+    svg.selectAll('rect')
       .data(noAxisData)
       .enter()
       .append('rect')

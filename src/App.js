@@ -11,7 +11,7 @@ import Blog from './pages/Blog/Blog';
 import Resource from './pages/Resource/Resource';
 import CrimeAnalysis from './pages/Work/Projects/CrimeAnalysis/CrimeAnalysis';
 import Homeless from './pages/Work/Projects/Homeless/Homeless';
-
+import LearningTrack from './pages/Work/Projects/LearningTrack/LearningTrack';
 
 class App extends Component {
   render() {
@@ -25,6 +25,7 @@ class App extends Component {
           <Route exact path="/work" component={Work} />
           <Route exact path="/work/crimeanalysis" component={CrimeAnalysis} />
           <Route exact path="/work/homeless" component={Homeless} />
+          <Route exact path="/work/learningtrack" component={LearningTrack} />
           <Route exact path="/blog" component={Blog} />
           <Route exact path="/resource" component={Resource} />
         </div>

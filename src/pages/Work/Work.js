@@ -36,9 +36,9 @@ class Work extends Component {
       },
       {
         id: 3,
-        link: '/',
-        image: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/flex-1.jpg',
-        title: 'Coming Soon!',
+        link: '/work/learningtrack',
+        image: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/flex-5.jpg',
+        title: 'Learning Track',
         info: 'D3.js',
       },
       {

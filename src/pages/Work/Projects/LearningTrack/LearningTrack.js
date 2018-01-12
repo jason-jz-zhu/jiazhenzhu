@@ -51,7 +51,7 @@ class LearningTrack extends Component {
       {
         category: 'Web Development', subcategory: 'Back-End', point: 4, description: 'Calculate Data for Web',
       }];
-    const courses = [{ name: 'c1', time: 1 }, { name: 'c2', time: 2 }, { name: 'c3', time: 3 }]
+    const courses = [{ name: 'c1', time: 1 }, { name: 'c2', time: 2 }, { name: 'c3', time: 3 }];
     const radius = 100;
     const node = this.learningtrack;
     const svg = d3.select(node);
@@ -66,7 +66,7 @@ class LearningTrack extends Component {
     // dunot arc
     const arc = d3.arc()
       .outerRadius(radius - 10)
-      .innerRadius(radius - 15)
+      .innerRadius(radius - 20)
       .padAngle(0.03)
       .cornerRadius(8);
     // dunot pie
@@ -75,7 +75,7 @@ class LearningTrack extends Component {
       .value(d => d.subcategory.length);
     // get center for each pie
     const centersData = pie(data).map(arc.centroid);
-    // console.log(centersData);
+    console.log(centersData);
     // main
     const main = svg.append('g')
       .attr('transform', `translate(${500}, ${500})`)
@@ -93,56 +93,40 @@ class LearningTrack extends Component {
       .style('fill', d => donutColorScale(d.data.category))
       .style('opacity', 0.35);
     // points on the arc
-    main.append('g')
-      .selectAll('circle')
-      .data(centersData)
-      .enter()
-      .append('circle')
-      .attr('r', '4')
-      .attr('cx', d => d[0])
-      .attr('cy', d => d[1])
-      .style('fill', 'white')
-      .style('stroke', '#aaa');
-
-    // var n = 21;
-    // var dataset = d3.range(n).map(function(d) { return {"y": d3.randomUniform(1)() } })
-    //
-    //
     const need = [
-      { x: 5.087672529666641, y: -87.35196384873596 },
-      { x: 0, y: -150 }, { x: -5, y: -200 },
-      { x: 150, y: -200 },
+      { x: 0, y: 0, finish: false },
+      { x: 5.087672529666641, y: -87.35196384873596, finish: true },
+      { x: 0, y: -150, finish: false },
+      { x: -5, y: -200, finish: false },
+      { x: 150, y: -200, finish: false },
+      { x: 200, y: -250, finish: false },
     ];
     const lineGenerate = d3.line()
       .x(d => d.x)
       .y(d => d.y)
-      .curve(d3.curveCardinal);
+      .curve(d3.curveCardinalOpen);
 
-    main.selectAll(`xx`)
-      .data([need])
-      .enter()
-      .append('path')
-      .attr('class', `xx`)
-      .attr('d', lineGenerate)
-      .style('stroke', 'steelblue')
-      .style('stroke-width', '2')
-      .style('fill', 'none');
-
-    // for (let i = 0; i < need.length - 1; i += 1) {
-    //   console.log(need.slice(i, i + 2));
-    //   main.selectAll(`xx${i}`)
-    //     .data([need.slice(i, i + 4)])
-    //     .enter()
-    //     .append('path')
-    //     .attr('class', `xx${i}`)
-    //     .attr('d', lineGenerate)
-    //     .style('stroke', 'steelblue')
-    //     .style('stroke-width', '2')
-    //     .style('fill', 'none');
-    // }
+    for (let i = 0; i < need.length - 3; i += 1) {
+      main.selectAll(`xx${i}`)
+        .data([need.slice(i, i + 4)])
+        .enter()
+        .append('path')
+        .attr('class', `xx${i}`)
+        .attr('d', lineGenerate)
+        .style('stroke', (d) => {
+          console.log(d);
+          if (d[1].finish === false && d[1].finish === false) {
+            return '#aaa';
+          }
+          return 'rgb(224, 0, 130)';
+        })
+        .style('stroke-width', '2')
+        .style('fill', 'none')
+        .style('opacity', 0.35);
+    }
     main.append('g')
       .selectAll('circle2')
-      .data(need)
+      .data(need.slice(2, need.length - 1))
       .enter()
       .append('circle')
       .attr('r', '6')

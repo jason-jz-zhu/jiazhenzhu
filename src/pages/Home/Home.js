@@ -51,10 +51,10 @@ class Home extends Component {
           <h2 className="rightHeader">
             <div className="rightUpHeader">
               I love&nbsp;
-              <span className="transparent">data engineering</span>,
+              <span className="transparent">Data Engineering</span>,
               <br />
-              <span className="transparent">data science</span>, and&nbsp;
-              <span className="transparent">data visualizations</span>.&nbsp;
+              <span className="transparent">Data Science</span>, and&nbsp;
+              <span className="transparent">Data Visualizations</span>.&nbsp;
               <br />
               I know how to tranfer raw data into visualizations
               <br />
@@ -64,20 +64,23 @@ class Home extends Component {
               <IconBar />
             </div>
           </h2>
-
         </div>
       </div>
     );
 
     return (
       <div>
+        <div className="line" />
         {abstract}
-        <div className="chart">
-          <RadialHistogram />
-        </div>
-        <div className="cardsWrapper">
-          <Cards data={cardsData} />
-        </div>
+        <div className="line" />
+        <section className="contentSection">
+          <div className="chart">
+            <RadialHistogram />
+          </div>
+          <div className="cardsWrapper">
+            <Cards data={cardsData} />
+          </div>
+        </section>
       </div>
     );
   }

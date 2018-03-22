@@ -75,6 +75,7 @@ class Work extends Component {
     return (
       <div>
         <Abstract data={workAbstractData} />
+        <div className="line" />
         <nav className="filterWrapper">
           <ul>
             {this.state.filterList.map(item => (

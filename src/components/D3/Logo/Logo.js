@@ -82,9 +82,7 @@ class Logo extends Component {
 
   render() {
     return (
-      <div>
-        <svg ref={(c) => { this.logo = c; }} width={50} height={50} />
-      </div>
+      <svg ref={(c) => { this.logo = c; }} width={50} height={50} />
     );
   }
 }

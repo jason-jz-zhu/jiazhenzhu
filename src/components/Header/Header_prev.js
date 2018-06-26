@@ -23,12 +23,23 @@ class Header extends Component {
     return (
       <header className="header">
         <Navbar light expand="md">
-
+          <NavbarBrand className="brand" href="/">
+            <Logo />
+          </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
+                <NavLink href="/about">About</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href="/contact">Contact</NavLink>
+              </NavItem>
+              <NavItem>
                 <NavLink href="/work">Work</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href="/blog">Blog</NavLink>
               </NavItem>
               <NavItem>
                 <NavLink href="/resource">Resource</NavLink>

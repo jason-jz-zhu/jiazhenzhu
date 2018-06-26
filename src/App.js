@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import './App.css';
 import Header from './components/Header/Header';
-import Footer from './components/Footer/Footer';
 import Home from './pages/Home/Home';
 import About from './pages/About/About';
 import Contact from './pages/Contact/Contact';
@@ -29,7 +28,6 @@ class App extends Component {
           <Route exact path="/blog" component={Blog} />
           <Route exact path="/resource" component={Resource} />
         </div>
-        <Footer />
       </div>
     );
   }

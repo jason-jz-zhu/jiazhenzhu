@@ -52,9 +52,9 @@ class Home extends Component {
           </p>
           <p>
             I am interested in data, methods and models that can be used to understand the communication between people and computer, 
-            human behavior in networks, analysis of social networks. Another interesting area of 
+            human behavior in networks, analysis of social networks etc. Another interesting area of 
             research is the design of system using practical machine learning workflows. 
-            I do whole workflow from data engineering to data science. validate/clean/aggregation data, feature engineering, model selection, and data visualization.
+            I do whole workflow from data engineering to data science such as validate/clean/aggregation data, feature engineering, model selection, and data visualization.
           </p>
           <p>
             <b>I am looking for PhD opportunity on machine learning in different area or the design of system using practical machine learning workflows.</b>
@@ -63,14 +63,14 @@ class Home extends Component {
         <section className="newsWrapper">
           <h2 className="underline">News</h2>
           <ul>
-            <li>[6/2018] I will work on crop prediction project using GANs. </li>
-            <li>[6/2018] I have successfully earned my MicroMaster of Analytics from Gatech. </li>
-            <li>[5/2018] One Paper on coordinating volunteers in disaster relief using reinforcement learning has been submitted to <b>ICDM</b>. </li>
-            <li>[5/2018] I will come to Data Discovery Lab at TTU as research assistant (volunteer) to work on deep learning. </li>
-            <li>[8/2014] I will come to NETE as data scientist and data engineer. </li>
-            <li>[8/2014] I have successfully earned my Master of Computer Science from The George Washington University. </li>
-            <li>[1/2014] I will join the team in GWU to analyze the relationsihp between market environment and goverment policy. </li>
-            <li>[1/2013] I will come to The George Washington University for my master study this spring. </li>
+            <li>[06/2018] I will work on crop prediction project using GANs. </li>
+            <li>[06/2018] I have successfully earned my MicroMaster of Analytics from Gatech. </li>
+            <li>[05/2018] One Paper on coordinating volunteers in disaster relief using reinforcement learning has been submitted to <b>ICDM</b>. </li>
+            <li>[05/2018] I will come to Data Discovery Lab at TTU as research assistant (volunteer) to work on deep learning. </li>
+            <li>[08/2014] I will come to NETE as data scientist and data engineer. </li>
+            <li>[08/2014] I have successfully earned my Master of Computer Science from The George Washington University. </li>
+            <li>[01/2014] I will join the team in GWU to analyze the relationsihp between market environment and goverment policy. </li>
+            <li>[01/2013] I will come to The George Washington University for my master study this spring. </li>
             <li>[12/2012] The paper on Facial Image Quality Assessment has been accepted to <b>CCBR</b>. </li>
             <li>[12/2011] I will come to Citi Bank as software engineer (data). </li>
             <li>[11/2011] The paper on Facial Image Quality Assessment has been accepted to <b>ICIP</b>. </li>
@@ -92,7 +92,7 @@ class Home extends Component {
           <h3>2012</h3>
           <ul>
             <li>
-              <a>Fusion of mSSIM and SVM for Reduced-Reference Facial Image Quality Assessment</a>
+              <a href="/Fusion of mSSIM and SVM for Reduced-Reference Facial Image Quality Assessment.pdf">Fusion of mSSIM and SVM for Reduced-Reference Facial Image Quality Assessment</a>
               <br/>
               Pengjun Ji, Yuchun Fang, Zhonghua Zhou, <b>Jiazhen Zhu</b>
               <br/>
@@ -103,7 +103,7 @@ class Home extends Component {
           <h3>2011</h3>
           <ul>
             <li>
-              <a>RRAR: A novel reduced- reference IQA algorithm for facial images</a>
+              <a href="/RRAR_A Novel Reduced-Reference IQA Algorithm for Facial Images.pdf">RRAR: A novel reduced-reference IQA algorithm for facial images</a>
               <br/>
               <b>Jiazhen Zhu</b>, Yuchun Fang, Pengjun Ji, Abdl Moad-EL, Wang Dai
               <br/>

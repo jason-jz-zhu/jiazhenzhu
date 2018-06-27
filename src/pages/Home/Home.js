@@ -27,7 +27,6 @@ class Home extends Component {
         <br/><br/>
         <font face="courier" size="2"><b>Data Researcher and Data Enginneer</b></font>
         <font face="courier" size="2"><p>Email: jason.jz.zhu at gmail dot com</p></font>
-        
         <font face="courier" size="2" color="#888"><p>“There is no failure except in no longer trying.”</p></font>
         <div className="rightDownIconBar">
           <IconBar />
@@ -48,7 +47,7 @@ class Home extends Component {
             I am also a Data Scientist and Data Engineer at NETE.
             Previously, I got my MicroMaster of Analytics from <a href="https://pe.gatech.edu/master-science-degrees/analytics/analytics-essential-tools-and-methods-micromasters">Georgia Institute of Technology</a> in 2018.
             Before that, I earned my Master of Computer Science from the <a href="https://www.gwu.edu/">George Washington University</a> in 2013
-            and Bachelor of Computer Science from <a href="http://en.shu.edu.cn/Default.aspx">Shanghai University</a> in 2011, where he worked with Prof. Yuchun Fang.
+            and Bachelor of Computer Science from <a href="http://en.shu.edu.cn/Default.aspx">Shanghai University</a> in 2011, where I worked with Prof. Yuchun Fang.
             I was a Software Engineer (Data) for 1.5 years at Citi Bank, Shanghai, CHINA before.
           </p>
           <p>
@@ -64,16 +63,16 @@ class Home extends Component {
         <section className="newsWrapper">
           <h2 className="underline">News</h2>
           <ul>
-            <li>[6/2018] I will work on crop prediction using GANs. </li>
+            <li>[6/2018] I will work on crop prediction project using GANs. </li>
             <li>[6/2018] I have successfully earned my MicroMaster of Analytics from Gatech. </li>
             <li>[5/2018] One Paper on coordinating volunteers in disaster relief using reinforcement learning has been submitted to <b>ICDM</b>. </li>
-            <li>[5/2018] I will come to Data Discovery Lab at TTU as research assistant to work on deep learning. </li>
+            <li>[5/2018] I will come to Data Discovery Lab at TTU as research assistant (volunteer) to work on deep learning. </li>
             <li>[8/2014] I will come to NETE as data scientist and data engineer. </li>
             <li>[8/2014] I have successfully earned my Master of Computer Science from The George Washington University. </li>
             <li>[1/2014] I will join the team in GWU to analyze the relationsihp between market environment and goverment policy. </li>
             <li>[1/2013] I will come to The George Washington University for my master study this spring. </li>
             <li>[12/2012] The paper on Facial Image Quality Assessment has been accepted to <b>CCBR</b>. </li>
-            <li>[12/2011] I will come to CITI Bank as software engineer (data). </li>
+            <li>[12/2011] I will come to Citi Bank as software engineer (data). </li>
             <li>[11/2011] The paper on Facial Image Quality Assessment has been accepted to <b>ICIP</b>. </li>
           </ul>
         </section>
@@ -88,7 +87,6 @@ class Home extends Component {
                 <br/>
                 IEEE International Conference on Data Mining (ICDM), 2018. (Submitted)
                 <br/>
-                [<a>code</a>]
               </li>
             </ul>
           <h3>2012</h3>
@@ -100,7 +98,6 @@ class Home extends Component {
               <br/>
               Chinese Conference on Biometric Recognition (CCBR), 2012.
               <br/>
-              [<a>pdf</a>], [<a>code</a>]
             </li>
           </ul>
           <h3>2011</h3>
@@ -112,7 +109,6 @@ class Home extends Component {
               <br/>
               IEEE International Conference on Image Processing (ICIP), 2011.
               <br/>
-              [<a>pdf</a>]
             </li>
           </ul>
         </section>

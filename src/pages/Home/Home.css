@@ -39,8 +39,15 @@
   margin-bottom: 20px;
 }
 
-.homeWrapper p {
+.bioWrapper p {
   padding: 0 40px 0 40px;
+  margin-bottom: 20px;
+  line-height: 1.6;
+  font-family: Georgia, serif;
+}
+
+.profileContactWrapper p {
+  padding: 0 40px 0 0;
   margin-bottom: 20px;
   line-height: 1.6;
   font-family: Georgia, serif;

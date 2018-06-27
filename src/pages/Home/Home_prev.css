@@ -1,4 +1,4 @@
-.abstractWrapper {
+.HomeAbstractWrapper {
   /*width: 80%;*/
   margin: auto;
   padding: 19px 0;
@@ -12,9 +12,6 @@
   align-items: center;
   justify-content: space-around;
   height: 100%;
-  text-align: center;
-  max-width: 69rem;
-  margin: auto;
 }
 
 .leftHeader {
@@ -27,6 +24,12 @@
   font-style: normal;
   font-weight: 700;
 }
+
+/* .jiazhen {
+  display: flex;
+  flex-direction: row;
+  justify-content:flex-start;
+} */
 
 .rightHeader {
   flex: 1;
@@ -41,4 +44,36 @@
   display: flex;
   flex-direction: column;
   justify-content:flex-end;
+}
+
+.rightUpHeader {
+  align-self: center;
+}
+
+.underline {
+  border-bottom: 3px solid #eee;
+}
+
+.transparent {
+  background-color: rgba(238,238,238,.7);
+  padding: .5px;
+}
+
+.rightDownIconBar {
+  align-self: flex-end;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  margin-top: 26px;
+}
+
+.chart {
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 50px;
+}
+
+.cardsWrapper {
+  margin-top: 50px;
+  padding-bottom: 50px;
+  border-bottom: 1px solid #ddd;
 }

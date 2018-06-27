@@ -4,7 +4,7 @@ import './Abstract.css';
 class Abstract extends Component {
   render() {
     const abstract = (
-      <div className="abstractWrapper">
+      <div className="abstractWrapper" style={this.props.color}>
         <div className="textContainer">
           <h1 className="leftHeader">
             <strong>

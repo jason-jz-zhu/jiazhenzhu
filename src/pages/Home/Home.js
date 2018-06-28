@@ -43,7 +43,7 @@ class Home extends Component {
         <section className="bioWrapper">
           <h2 className="underline">Biography [<a href="/Jiazhen_Zhu_Resume.pdf">CV</a>]</h2>
           <p>
-            I am a research assistant under Data Discovery Lab at <a href="http://myweb.ttu.edu/fjin/">TTU</a>, under the supervision of Prof. <a href="http://www.depts.ttu.edu/cs/faculty/fang_jin/index.php">Fang Jin</a>.
+            I am a research assistant (volunteer) under Data Discovery Lab at <a href="http://myweb.ttu.edu/fjin/">TTU</a>, under the supervision of Prof. <a href="http://www.depts.ttu.edu/cs/faculty/fang_jin/index.php">Fang Jin</a>.
             I am also a Data Scientist and Data Engineer at NETE.
             Previously, I got my MicroMaster of Analytics from <a href="https://pe.gatech.edu/master-science-degrees/analytics/analytics-essential-tools-and-methods-micromasters">Georgia Institute of Technology</a> in 2018.
             Before that, I earned my Master of Computer Science from the <a href="https://www.gwu.edu/">George Washington University</a> in 2013

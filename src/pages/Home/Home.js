@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 // import components
 import RadialHistogram from '../../components/D3/RadialHistogram/RadialHistogram';
+import Timeline from '../../components/D3/Timeline/Timeline';
 import IconBar from '../../components/IconBar/IconBar';
 import Cards from '../../components/Cards/Cards';
 
@@ -40,6 +41,7 @@ class Home extends Component {
           <IconBar />
         </div>
         <div className="rightNav">
+          <Timeline />
         </div>
         <section className="profileContactWrapper">
           {profile}

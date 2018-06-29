@@ -26,7 +26,10 @@ class Home extends Component {
         </table>
         <br/><br/>
         <font face="courier" size="2"><b>Data Researcher and Data Enginneer</b></font>
-        <font face="courier" size="2"><p>Email: jason.jz.zhu at gmail dot com</p></font>
+        <br />
+        <font face="courier" size="2"><b>Email: jason.jz.zhu at gmail dot com</b></font>
+        <br />
+        <br />
         <font face="courier" size="2" color="#888"><p>“There is no failure except in no longer trying.”</p></font>
         <div className="rightDownIconBar">
           <IconBar />
@@ -44,11 +47,11 @@ class Home extends Component {
           <h2 className="underline">Biography [<a href="/Jiazhen_Zhu_Resume.pdf">CV</a>]</h2>
           <p>
             I am a research assistant (volunteer) under Data Discovery Lab at <a href="http://myweb.ttu.edu/fjin/">TTU</a>, under the supervision of Prof. <a href="http://www.depts.ttu.edu/cs/faculty/fang_jin/index.php">Fang Jin</a>.
-            I am also a Data Scientist and Data Engineer at NETE.
+            Currently, I am also a Data Scientist and Data Engineer at <a href="https://nete.com/">NETE</a>.
             Previously, I got my MicroMaster of Analytics from <a href="https://pe.gatech.edu/master-science-degrees/analytics/analytics-essential-tools-and-methods-micromasters">Georgia Institute of Technology</a> in 2018.
-            Before that, I earned my Master of Computer Science from the <a href="https://www.gwu.edu/">George Washington University</a> in 2013
+            And I earned my Master of Computer Science from the <a href="https://www.gwu.edu/">George Washington University</a> in 2013
             and Bachelor of Computer Science from <a href="http://en.shu.edu.cn/Default.aspx">Shanghai University</a> in 2011, where I worked with Prof. Yuchun Fang.
-            I was a Software Engineer (Data) for 1.5 years at Citi Bank, Shanghai, CHINA before.
+            I was a Software Engineer (Data) for 1.5 years at Citi Bank, Shanghai, CHINA in 2011.
           </p>
           <p>
             I am interested in data, methods and models that can be used to understand the communication between people and computer, 

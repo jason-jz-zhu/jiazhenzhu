@@ -20,14 +20,14 @@ class Home extends Component {
           <tbody>
             <tr>
               <td><font size="5">Jiazhen Zhu &nbsp;</font></td>
-              <td><img align="right" src="/Jiazhen_zhong.png" height="50" /></td>
+              <td><img align="right" src="/Jiazhen_Zhu.png" height="50" /></td>
             </tr>
           </tbody>
         </table>
         <br/><br/>
-        <font face="courier" size="2"><b>Data Researcher and Data Enginneer</b></font>
+        <font face="verdana" size="2">Data Researcher and Data Enginneer</font>
         <br />
-        <font face="courier" size="2"><b>Email: jason.jz.zhu at gmail dot com</b></font>
+        <font face="verdana" size="2">Email: jason.jz.zhu at gmail dot com</font>
         <br />
         <br />
         <font face="courier" size="2" color="#888"><p>“There is no failure except in no longer trying.”</p></font>
@@ -84,7 +84,7 @@ class Home extends Component {
           <h3>2018</h3>
             <ul>
               <li>
-                <a>Coordinating Disaster Emergency Response withHeuristic Reinforcement Learning</a>
+                Coordinating Disaster Emergency Response withHeuristic Reinforcement Learning
                 <br/>
                 Yang Zhou, Nguyen Long, <b>Jiazhen Zhu</b>, Fang Jin
                 <br/>

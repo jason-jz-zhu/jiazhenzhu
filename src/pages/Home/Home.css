@@ -39,11 +39,39 @@
   margin-bottom: 20px;
 }
 
+.bioWrapper a,
+.bioWrapper a:link,
+.bioWrapper a:visited,
+.bioWrapper a:active {
+  color: #f27c07;
+  border-bottom: 1px dotted rgba(203, 39, 46, .5);
+  text-decoration: none;
+  background-color: transparent;
+}
+
+.bioWrapper a:hover {
+  text-decoration: none;
+  border-bottom: 1px solid #f27c07;
+}
+
+.publicationsWrapper a {
+  color: #f27c07;
+  border-bottom: 1px dotted rgba(203, 39, 46, .5);
+}
+
+.publicationsWrapper a:hover {
+  text-decoration: none;
+  border-bottom: 1px solid #f27c07;
+}
+
 .bioWrapper p {
   padding: 0 40px 0 40px;
   margin-bottom: 20px;
-  line-height: 1.6;
+  /* line-height: 1.6; */
   font-family: Georgia, serif;
+  /* font-size: 13px; */
+  line-height: 160%;
+  color: #292929;
 }
 
 .profileContactWrapper p {

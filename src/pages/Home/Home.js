@@ -13,7 +13,7 @@ class Home extends Component {
         <img src="/jiazhen.jpg" weight="200" height="280" />
       </div>
     )
-    
+
     const contact = (
       <div className="contact">
         <table border="0">
@@ -31,14 +31,16 @@ class Home extends Component {
         <br />
         <br />
         <font face="courier" size="2" color="#888"><p>“There is no failure except in no longer trying.”</p></font>
-        <div className="rightDownIconBar">
-          <IconBar />
-        </div>
       </div>
     )
 
     return (
       <div className="homeWrapper">
+        <div className="leftNav">
+          <IconBar />
+        </div>
+        <div className="rightNav">
+        </div>
         <section className="profileContactWrapper">
           {profile}
           {contact}
@@ -54,9 +56,9 @@ class Home extends Component {
             I was a Software Engineer (Data) for 1.5 years at Citi Bank, Shanghai, CHINA in 2011.
           </p>
           <p>
-            I am interested in data, methods and models that can be used to understand the communication between people and computer, 
-            human behavior in networks, analysis of social networks etc. Another interesting area of 
-            research is the design of system using practical machine learning workflows. 
+            I am interested in data, methods and models that can be used to understand the communication between people and computer,
+            human behavior in networks, analysis of social networks etc. Another interesting area of
+            research is the design of system using practical machine learning workflows.
             I do whole workflow from data engineering to data science such as validate/clean/aggregation data, feature engineering, model selection, and data visualization.
           </p>
           <p>

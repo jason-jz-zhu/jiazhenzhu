@@ -8,15 +8,15 @@
 }
 
 .profile {
-  padding: 10px 50px 0 40px;
+  padding: 10px 120px 0 40px;
 }
 
 .contact {
-  padding: 3em 0 1em 2em
+  padding: 3em 0 1em 2em;
 }
 
 .rightDownIconBar {
-  float:right;
+  float: right;
   align-self: flex-end;
   display: flex;
   flex-direction: column;
@@ -26,6 +26,10 @@
 
 .bioWrapper {
   margin: 10px 0 20px 0;
+}
+
+.homeWrapper {
+  position: relative;
 }
 
 .homeWrapper h2 {
@@ -44,7 +48,7 @@
 .bioWrapper a:visited,
 .bioWrapper a:active {
   color: #f27c07;
-  border-bottom: 1px dotted rgba(203, 39, 46, .5);
+  border-bottom: 1px dotted rgba(203, 39, 46, 0.5);
   text-decoration: none;
   background-color: transparent;
 }
@@ -56,7 +60,7 @@
 
 .publicationsWrapper a {
   color: #f27c07;
-  border-bottom: 1px dotted rgba(203, 39, 46, .5);
+  border-bottom: 1px dotted rgba(203, 39, 46, 0.5);
 }
 
 .publicationsWrapper a:hover {
@@ -84,4 +88,21 @@
 .line {
   border-bottom: 2px solid #ddd;
   margin: 10px 0 10px 0;
+}
+
+.leftNav {
+  position: absolute;
+  top: 50px;
+  left: -150px;
+  height: 200px;
+  width: 50px;
+  border-right: 1px solid #ddd;
+}
+
+.rightNav {
+  position: absolute;
+  top: 50px;
+  right: -250px;
+  height: 100%;
+  width: 200px;
 }

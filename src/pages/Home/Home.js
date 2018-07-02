@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 // import components
-import RadialHistogram from '../../components/D3/RadialHistogram/RadialHistogram';
+// import RadialHistogram from '../../components/D3/RadialHistogram/RadialHistogram';
 import Timeline from '../../components/D3/Timeline/Timeline';
 import IconBar from '../../components/IconBar/IconBar';
-import Cards from '../../components/Cards/Cards';
+// import Cards from '../../components/Cards/Cards';
 
 import './Home.css';
 
@@ -13,7 +13,7 @@ class Home extends Component {
       <div className="profile">
         <img src="/jiazhen.jpg" weight="200" height="280" />
       </div>
-    )
+    );
 
     const contact = (
       <div className="contact">
@@ -25,7 +25,7 @@ class Home extends Component {
             </tr>
           </tbody>
         </table>
-        <br/><br/>
+        <br /><br />
         <font face="verdana" size="2">Data Researcher and Data Enginneer</font>
         <br />
         <font face="verdana" size="2">Email: jason.jz.zhu at gmail dot com</font>
@@ -33,7 +33,7 @@ class Home extends Component {
         <br />
         <font face="courier" size="2" color="#888"><p>“There is no failure except in no longer trying.”</p></font>
       </div>
-    )
+    );
 
     return (
       <div className="homeWrapper">
@@ -86,36 +86,36 @@ class Home extends Component {
         <section className="publicationsWrapper">
           <h2 className="underline">Publications</h2>
           <h3>2018</h3>
-            <ul>
-              <li>
-                Coordinating Disaster Emergency Response withHeuristic Reinforcement Learning
-                <br/>
-                Yang Zhou, Nguyen Long, <b>Jiazhen Zhu</b>, Fang Jin
-                <br/>
-                IEEE International Conference on Data Mining (ICDM), 2018. (Submitted)
-                <br/>
-              </li>
-            </ul>
+          <ul>
+            <li>
+              Coordinating Disaster Emergency Response withHeuristic Reinforcement Learning
+              <br />
+              Yang Zhou, Nguyen Long, <b>Jiazhen Zhu</b>, Fang Jin
+              <br />
+              IEEE International Conference on Data Mining (ICDM), 2018. (Submitted)
+              <br />
+            </li>
+          </ul>
           <h3>2012</h3>
           <ul>
             <li>
               <a href="/Fusion of mSSIM and SVM for Reduced-Reference Facial Image Quality Assessment.pdf">Fusion of mSSIM and SVM for Reduced-Reference Facial Image Quality Assessment</a>
-              <br/>
+              <br />
               Pengjun Ji, Yuchun Fang, Zhonghua Zhou, <b>Jiazhen Zhu</b>
-              <br/>
+              <br />
               Chinese Conference on Biometric Recognition (CCBR), 2012.
-              <br/>
+              <br />
             </li>
           </ul>
           <h3>2011</h3>
           <ul>
             <li>
               <a href="/RRAR_A Novel Reduced-Reference IQA Algorithm for Facial Images.pdf">RRAR: A novel reduced-reference IQA algorithm for facial images</a>
-              <br/>
+              <br />
               <b>Jiazhen Zhu</b>, Yuchun Fang, Pengjun Ji, Abdl Moad-EL, Wang Dai
-              <br/>
+              <br />
               IEEE International Conference on Image Processing (ICIP), 2011.
-              <br/>
+              <br />
             </li>
           </ul>
         </section>

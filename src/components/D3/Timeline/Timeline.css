@@ -2,5 +2,19 @@
   font-size: 18px;
   text-anchor: middle;
   font-family: 'PT Sans Narrow', sans-serif;
-  fill: #252525;
+  /* fill: #252525; */
+}
+
+.timeline-side-text {
+  font-size: 12px;
+  text-anchor: middle;
+  fill: #9f9f9f;
+}
+
+
+.character-circle,
+.character-circle-legend {
+	mix-blend-mode: multiply;
+	/* pointer-events: none; */
+	opacity: 1;
 }

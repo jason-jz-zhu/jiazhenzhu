@@ -57,3 +57,9 @@
   fill: #444444;
   font-style: italic;
 }
+
+.circle-legend-text {
+  font-size: 4px;
+  fill: #444444;
+  font-family: 'Dancing Script', cursive;
+}

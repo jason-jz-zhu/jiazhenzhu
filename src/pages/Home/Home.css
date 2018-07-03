@@ -43,19 +43,34 @@
   margin-bottom: 20px;
 }
 
-.bioWrapper a,
-.bioWrapper a:link,
-.bioWrapper a:visited,
-.bioWrapper a:active {
+.education-link a,
+.education-link a:link,
+.education-link a:visited,
+.education-link a:active {
   color: #f27c07;
   border-bottom: 1px dotted rgba(203, 39, 46, 0.5);
   text-decoration: none;
   background-color: transparent;
 }
 
-.bioWrapper a:hover {
+.education-link a:hover {
   text-decoration: none;
   border-bottom: 1px solid #f27c07;
+}
+
+.working-link a,
+.working-link a:link,
+.working-link a:visited,
+.working-link a:active {
+  color: #1D75AD;
+  border-bottom: 1px dotted rgba(29, 117, 173, 0.5);
+  text-decoration: none;
+  background-color: transparent;
+}
+
+.working-link a:hover {
+  text-decoration: none;
+  border-bottom: 1px solid #1D75AD;
 }
 
 .publicationsWrapper a {
@@ -102,7 +117,7 @@
 .rightNav {
   position: absolute;
   top: 0px;
-  right: -250px;
+  right: -400px;
   height: 100%;
-  width: 200px;
+  width: 410px;
 }

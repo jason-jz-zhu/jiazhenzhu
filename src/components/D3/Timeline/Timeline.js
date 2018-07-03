@@ -21,9 +21,9 @@ class Timeline extends Component {
     // const backgroundRectSize = 150;
     const baseDistanceRatio = 0.7; // The default distance that the circles are apart
     const scaleIncrease = 3;
-
+    const backgroundCircleFactor = 6;
     const margin = {
-      top: 10,
+      top: 60,
       right: 10,
       bottom: 10,
       left: 10,
@@ -36,6 +36,19 @@ class Timeline extends Component {
     const main = svg.append('g')
       .attr('transform', `translate(${width / 2}, ${margin.top})`);
 
+    svg.append('text')
+      .attr('class', 'history')
+      .attr('x', 87)
+      .attr('y', 20)
+      .attr('dy', '0.3em')
+      .text('History');
+
+    svg.append('text')
+      .attr('class', 'future')
+      .attr('x', 87)
+      .attr('y', 740)
+      .attr('dy', '-0.3em')
+      .text('Future');
     // create side text
     main.append('text')
       .attr('class', 'timeline-side-text')
@@ -53,21 +66,31 @@ class Timeline extends Component {
 
     // create line
     main.append('line')
-      .attr('class', 'saga-line')
+      .attr('class', 'history-line')
       .attr('x1', 0)
-      .attr('y1', -height * 0.3)
+      .attr('y1', -10)
       .attr('x2', 0.001)
-      .attr('y2', height / 2)
+      .attr('y2', (height / 2) + 100)
       .style('stroke', '#d3d3d3');
 
-    // Create defs elements
+    main.append('line')
+      .attr('class', 'future-line')
+      .attr('x1', 0)
+      .attr('y1', (height / 2) + 100)
+      .attr('x2', 0.001)
+      .attr('y2', (height / 2) + 150)
+      .style('stroke', '#f96465')
+      .style('stroke-dasharray', ('3, 3'))
+      .attr('marker-end', 'url(#triangle)');
 
+
+    // Create defs elements
     // Container for the gradients
     const defs = main.append('defs');
 
     // Filter for the outside shadow
     const filter = defs.append('filter')
-      .attr('id', 'shadow-legend');
+      .attr('id', 'shadow');
 
     filter.append('feColorMatrix')
       .attr('type', 'matrix')
@@ -83,50 +106,66 @@ class Timeline extends Component {
     feMerge.append('feMergeNode')
       .attr('in', 'SourceGraphic');
 
+    defs.append('marker')
+      .attr('id', 'triangle')
+      .attr('refX', 6)
+      .attr('refY', 6)
+      .attr('markerWidth', 30)
+      .attr('markerHeight', 30)
+      .attr('orient', 'auto')
+      .append('path')
+      .attr('class', 'line-legend-arrow')
+      .attr('d', 'M 0 0 12 6 0 12 3 6');
+
     const data = [
       {
-        short_name: 'shu', area: 'eduction',
-        key: 'Shanghai University', content: 'Bachelor of Computer Science',
+        short_name: 'SHU', area: 'education',
+        key: 'Shanghai University', content: 'Bachelor of CS',
         year_period: '2007 - 2011', hightlight: 'Scholarship', year_start: '2007',
       },
       {
-        short_name: 'shu-research', area: 'eduction',
+        short_name: 'SHU-Lab', area: 'education',
         key: 'Multimedia Technology Lab at SHU', content: 'Research Assistant',
         year_period: '2009 - 2011', hightlight: 'Face Recognition/Image Quality Assessment/Published two papers', year_start: '2009',
       },
       {
-        short_name: 'gwu', area: 'eduction',
-        key: 'George Washington University', content: 'Master of Computer Science',
-        year: '2013 - 2014', hightlight: 'XXX', year_start: '2013',
+        short_name: 'GWU', area: 'education',
+        key: 'George Washington University', content: 'Master of CS',
+        year_period: '2013 - 2014', hightlight: 'XXX', year_start: '2013',
       },
       {
-        short_name: 'gatech', area: 'eduction',
+        short_name: 'Gatech', area: 'education',
         key: 'Georgia Institute of Technology', content: 'MicroMaster of Analytics',
-        year: '2017 - 2018', hightlight: 'XXX', year_start: '2017',
+        year_period: '2017 - 2018', hightlight: 'XXX', year_start: '2017',
       },
       {
-        short_name: 'ttu-research', area: 'eduction',
-        key: 'Data Discovery Lab at TTU', content: 'Research Assistant (Volunteer)',
-        year: '2018 - Present', hightlight: 'Machine Learning, Deep Learning', year_start: '2018',
+        short_name: 'TTU-Lab', area: 'education',
+        key: 'Data Discovery Lab at TTU', content: 'Research Assistant',
+        year_period: '2018 - Present', hightlight: 'Machine Learning, Deep Learning', year_start: '2018',
       },
       {
-        short_name: 'pwc', area: 'working',
+        short_name: 'PWC', area: 'working',
         key: 'PricewaterhouseCoopers', content: 'IT Intern',
         year_period: '2010 - 2010', hightlight: 'XXX', year_start: '2010',
       },
       {
-        short_name: 'citi', area: 'working',
-        key: 'Citi Bank', content: 'Software Engineer (Data)',
+        short_name: 'CITI', area: 'working',
+        key: 'Citi Bank', content: 'Software Engineer',
         year_period: '2011 - 2012', hightlight: 'Business Intelligence/Data WareHouse', year_start: '2011',
       },
       {
-        short_name: 'nete', area: 'working',
+        short_name: 'NETE', area: 'working',
         key: 'NETE', content: 'Data Scientist/Data Engineer',
-        year: '2014 - Present', hightlight: 'Data', year_start: '2014',
+        year_period: '2014 - Present', hightlight: 'Data', year_start: '2014',
+      },
+      {
+        short_name: 'MIT', area: 'education',
+        key: 'Massachusetts Institute of Technology', content: 'MicroMaster of Data Science',
+        year_period: '2018 - 2019', hightlight: 'Data', year_start: '2019',
       },
     ];
 
-    const timelineScale = d3.scaleLinear().domain([2007, 2019]).range([50, 500]);
+    const timelineScale = d3.scaleLinear().domain([2007, 2019]).range([50, 600]);
     // create circle wrapper
     const outerCircleWrapper = main.append('g').attr('class', 'outer-circle-wrapper');
 
@@ -134,129 +173,169 @@ class Timeline extends Component {
       .data(data)
       .enter().append('g')
       .attr('transform', (d) => {
-        const x = -baseRadius * baseDistanceRatio;
+        const x = 0;
         const y = timelineScale(d.year_start);
         return `translate(${x}, ${y})`;
       });
 
     const circles = circleWrapper.append('g')
       .attr('class', d => `education-circle-${d.short_name}`)
+
       .style('isolation', 'isolate')
+      .on('click', () => d3.event.stopPropagation())
       .on('mouseover', (d) => {
-        console.log('over');
+        const el = d3.select(`.education-circle-${d.short_name}`);
+        d3.select(el.node().parentNode).raise();
+        d3.event.stopPropagation();
+        // console.log(d.short_name);
+        // console.log(el);
+        const x = (d.area === 'education' ? -12 : 12);
+        el.transition('grow').duration(750)
+          .attr('transform', `scale(${scaleIncrease})`);
+        el.selectAll('.character-circle')
+          .transition('move').duration(700)
+          .attr('transform', `translate(${x}, 0)`);
+
+        el.select('.rect-background')
+          .transition().duration(500)
+          .attr('y', -baseRadius / 2)
+          .attr('height', baseRadius / 2);
+
+        el.select('.circle-background')
+          .style('filter', 'url(#shadow)')
+          .transition().duration(500)
+          .style('opacity', 1);
+
+        el.selectAll('.circle-legend-text')
+          .transition('fade').duration(1000)
+          .style('opacity', 1);
+        console.log(d.short_name);
+        if (d.short_name === 'NETE') {
+          el.select('.nete-note')
+            .transition('fade').duration(500)
+            .style('opacity', 0);
+        }
       })
       .on('mouseout', (d) => {
-        console.log('out');
+        const el = d3.select(`.education-circle-${d.short_name}`);
+        const x = (d.area === 'education' ? (-baseRadius * baseDistanceRatio) : (baseRadius * baseDistanceRatio));
+        el.transition('grow').duration(500)
+          .attr('transform', 'scale(1)');
+
+        el.selectAll('.character-circle')
+          .transition('move').duration(700)
+          .attr('transform', `translate(${x}, 0)`);
+
+        el.select('.circle-background')
+          .transition().duration(500)
+          .style('opacity', 0)
+          .on('end', () => el.select('.circle-background').style('filter', null));
+
+        el.selectAll('.circle-legend-text')
+          .transition('fade').duration(450)
+          .style('opacity', 0);
+
+        if (d.short_name === 'NETE') {
+          el.select('.nete-note')
+            .transition().duration(1000)
+            .style('opacity', 1);
+        }
       });
 
-    const circleBackground = circles.append('rect')
-      .attr('class', 'circle-background')
+    const rectBackground = circles.append('rect')
+      .attr('class', 'rect-background')
       .attr('x', -baseRadius * 2)
       .attr('y', -baseRadius)
       .attr('width', baseRadius * 5)
-      .attr('height', baseRadius)
+      .attr('height', baseRadius * 2)
       .style('fill', 'none');
-    // // Inner circle wrapper that can be scaled on hover
-    // const circle = outerCircleWrapper.append('g')
-    //   .attr('class', 'circle-legend')
-    //   .style('isolation', 'isolate');
-    // // Extra background that becomes visible on hover
-    // const circleBackground = circle.append('circle')
-    //   .attr('class', 'background-circle')
-    //   .attr('r', baseRadius * backgroundCircleFactor)
-    //   .style('opacity', 0);
 
-    // circle.selectAll('.education-circle')
-    //   .data(data)
-    //   .enter().append('circle')
-    //   .attr('class', d => `education-circle-${d.short_name}`)
-    //   .attr('transform', (d) => {
-    //     const x = -baseRadius * baseDistanceRatio;
-    //     const y = timelineScale(d.year_start);
-    //     return `translate(${x}, ${y})`;
-    //   })
-    //   .attr('r', baseRadius)
-    //   .style('fill', '#f27c07')
-    //   .style('opacity', 0.8)
-    //   .on('mouseover', (d) => {
-    //     const hoveredCircle = d3.selectAll(`.education-circle-${d.short_name}`);
-    //     const y = timelineScale(d.year_start);
-    //     hoveredCircle
-    //       .transition('grow').duration(750)
-    //       .attr('transform', `translate(-50, ${y}) scale(${scaleIncrease})`);
-    //
-    //     circle.select('.background-circle')
-    //       .style('filter', 'url(#shadow-legend)')
-    //       .transition().duration(1000)
-    //       .style('opacity', 1);
-    //   })
-    //   .on('mouseout', (d) => {
-    //     const hoveredCircle = d3.selectAll(`.education-circle-${d.short_name}`);
-    //     const x = -baseRadius * baseDistanceRatio;
-    //     const y = timelineScale(d.year_start);
-    //     hoveredCircle
-    //       .transition('grow').duration(400)
-    //       .attr('transform', `translate(${x}, ${y}) scale(1)`);
-    //   });
-    // // Create circles for fighters
-    // // circle.selectAll('.character-circle-legend')
-    // //   .data(data)
-    // //   .enter().append('circle')
-    // //   .attr('class', 'character-circle-legend')
-    // //   .attr('transform', (d, i) => {
-    // //     const x = -baseRadius * baseDistanceRatio * (i === 0 ? 1 : -1);
-    // //     return `translate(${x}, 50)`;
-    // //   })
-    // //   .attr('r', baseRadius)
-    // //   .style('fill', d => d.color)
-    // //   .on('mouseover', (d) => {
-    // //     const hoveredCircle = d3.selectAll('.circle-legend');
-    // //     const y = -50 * (scaleIncrease - 1);
-    // //     hoveredCircle
-    // //       .transition('grow').duration(750)
-    // //       .attr('transform', `translate(0, ${y}) scale(${scaleIncrease})`);
-    // //
-    // //     hoveredCircle.selectAll('.character-circle-legend')
-    // //       .transition('move').duration(1000)
-    // //       .attr('transform', (d, i) => {
-    // //         const x = -baseRadius * 2.5 * (i % 2 === 0 ? 1 : -1);
-    // //         return `translate(${x}, 50)`;
-    // //       });
-    // //   })
-    // //   .on('mouseout', (d) => {
-    // //     const hoveredCircle = d3.selectAll('.circle-legend');
-    // //     hoveredCircle
-    // //       .transition('grow').duration(400)
-    // //       .attr('transform', 'scale(1)');
-    // //
-    // //
-    // //     hoveredCircle.selectAll('.character-circle-legend, .fight-legend-circle-text')
-    // //       .transition('move').duration(750)
-    // //       .attr('transform', (d, i) => {
-    // //         const x = -baseRadius * baseDistanceRatio * (i % 2 === 0 ? 1 : -1);
-    // //         return `translate(${x}, 50)`;
-    // //       });
-    // //   });
-    //
-    // // Add SSJ class around Goku
-    // circle.selectAll('.education-circle-o')
-    //   .data(data)
-    //   .enter().append('circle')
-    //   .attr('class', d => `education-circle-${d.short_name}`)
-    //   .attr('transform', (d) => {
-    //     const x = -baseRadius * baseDistanceRatio;
-    //     const y = timelineScale(d.year_start);
-    //     return `translate(${x}, ${y})`;
-    //   })
-    //   .attr('r', baseRadius * 1.5)
-    //   .style('fill', 'none')
-    //   .style('stroke', data[0].color)
-    //   .style('stroke-width', 1);
+    circles.append('circle')
+      .attr('class', 'circle-background')
+      .attr('r', baseRadius * backgroundCircleFactor)
+      .style('opacity', 0)
+      .style('fill', 'white');
+
+    circles.append('circle')
+      .attr('class', 'character-circle')
+      .attr('transform', (d) => {
+        const x = (d.area === 'education' ? (-baseRadius * baseDistanceRatio) : (baseRadius * baseDistanceRatio));
+        return `translate(${x}, 0)`;
+      })
+      .attr('r', baseRadius)
+      .style('fill', d => (d.area === 'education' ? '#f27c07' : '#1D75AD'));
+
+    circles.append('circle')
+      .attr('class', 'character-circle')
+      .attr('transform', (d) => {
+        const x = (d.area === 'education' ? (-baseRadius * baseDistanceRatio) : (baseRadius * baseDistanceRatio));
+        return `translate(${x}, 0)`;
+      })
+      .attr('r', baseRadius * 1.5)
+      .style('fill', 'none')
+      .style('stroke', d => (d.area === 'education' ? '#f27c07' : '#ffffff'))
+      .style('stroke-width', 1);
+
+    circles.append('text')
+      .attr('class', 'circle-legend-text')
+      .attr('dy', '-3.1em')
+      .style('fill', d => (d.area === 'education' ? '#f27c07' : '#1D75AD'))
+      .style('opacity', 0)
+      .text(d => d.short_name);
+
+    circles.append('text')
+      .attr('class', 'circle-legend-text')
+      .attr('dy', '3.75em')
+      .style('fill', d => (d.area === 'education' ? '#f27c07' : '#1D75AD'))
+      .style('opacity', 0)
+      .text(d => d.content);
+
+    circles.append('text')
+      .attr('class', 'circle-legend-text')
+      .attr('dx', d => (d.area === 'education' ? '2.80em' : '-2.60em'))
+      .attr('dy', '0.3em')
+      .style('fill', d => (d.area === 'education' ? '#f27c07' : '#1D75AD'))
+      .style('opacity', 0)
+      .text(d => d.year_period);
+
+    const points1 = [
+      [10, 0],
+      [50, -30],
+      [100, -35],
+    ];
+    const lineGenerator = d3.line()
+      .curve(d3.curveCardinal);
+    const path1Data = lineGenerator(points1);
+    const neteNote = d3.select('.education-circle-NETE').append('g').attr('class', 'nete-note');
+    neteNote.append('path')
+      .attr('d', path1Data)
+      .style('fill', 'none')
+      .style('stroke', '#1D75AD')
+      .style('opacity', 1);
+    neteNote.append('rect')
+      .attr('x', 105)
+      .attr('y', -45)
+      .attr('width', 5)
+      .attr('height', 30)
+      .style('fill', '#1D75AD')
+      .style('opacity', 1);
+    neteNote.append('text')
+      .attr('class', 'note-top')
+      .attr('x', 115)
+      .attr('y', -33)
+      .text('Data Scientist')
+      .style('opacity', 1);
+    neteNote.append('text')
+      .attr('class', 'note-down')
+      .attr('x', 115)
+      .attr('y', -20)
+      .text('NETE | 2014 - Present')
+      .style('opacity', 1);
   }
 
   render() {
     return (
-      <svg ref={(c) => { this.timeline = c; }} width={200} height={800} />
+      <svg ref={(c) => { this.timeline = c; }} width={300} height={1000} />
     );
   }
 }

@@ -101,7 +101,7 @@
 
 .rightNav {
   position: absolute;
-  top: 50px;
+  top: 0px;
   right: -250px;
   height: 100%;
   width: 200px;

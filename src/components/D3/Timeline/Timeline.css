@@ -1,0 +1,65 @@
+.fight-legend-text {
+  font-size: 18px;
+  text-anchor: middle;
+  font-family: 'PT Sans Narrow', sans-serif;
+  /* fill: #252525; */
+}
+
+.timeline-side-text {
+  font-size: 12px;
+  text-anchor: middle;
+  fill: #9f9f9f;
+}
+
+
+.character-circle,
+.character-circle-legend {
+	mix-blend-mode: multiply;
+	/* pointer-events: none; */
+	opacity: 1;
+}
+
+.circle-text {
+  font-size: 11px;
+  text-anchor: middle;
+  fill: #9f9f9f;
+}
+
+.future,
+.history,
+.timeline-side-text {
+  font-size: 15px;
+  text-anchor: middle;
+  fill: #9f9f9f;
+  font-family: 'Dancing Script', cursive;
+}
+
+.circle-legend-text {
+  font-size: 5px;
+  text-anchor: middle;
+  font-family: 'PT Sans Narrow', sans-serif;
+}
+
+.line-legend-arrow {
+  fill: #cccccc;
+  stroke: #ffffff;
+}
+
+.note-top {
+  font-size: 10px;
+  fill: #444444;
+  font-weight: bold;
+  font-family: 'Dancing Script', cursive;
+}
+
+.note-down {
+  font-size: 8px;
+  fill: #444444;
+  font-style: italic;
+}
+
+.circle-legend-text {
+  font-size: 4px;
+  fill: #444444;
+  font-family: 'Dancing Script', cursive;
+}

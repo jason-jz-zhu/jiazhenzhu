@@ -16,7 +16,7 @@ class Timeline extends Component {
   }
 
   createTimeline() {
-    const baseRadius = 5;
+    const baseRadius = 5.5;
     // How many times the baseRadius should the background circle become
     // const backgroundRectSize = 150;
     const baseDistanceRatio = 0.7; // The default distance that the circles are apart
@@ -36,19 +36,19 @@ class Timeline extends Component {
     const main = svg.append('g')
       .attr('transform', `translate(${width / 2}, ${margin.top})`);
 
-    // svg.append('text')
-    //   .attr('class', 'history')
-    //   .attr('x', 195)
-    //   .attr('y', 20)
-    //   .attr('dy', '0.3em')
-    //   .text('History');
-
     svg.append('text')
       .attr('class', 'future')
-      .attr('x', 87)
-      .attr('y', 740)
-      .attr('dy', '-0.3em')
+      .attr('x', 195)
+      .attr('y', 10)
+      .attr('dy', '0.3em')
       .text('Future');
+
+    svg.append('text')
+      .attr('class', 'past')
+      .attr('x', 95)
+      .attr('y', 720)
+      .attr('dy', '-0.3em')
+      .text('Past');
     // create side text
     main.append('text')
       .attr('class', 'timeline-side-text')
@@ -67,20 +67,20 @@ class Timeline extends Component {
     // create line
     main.append('line')
       .attr('class', 'history-line')
-      .attr('x1', 0)
-      .attr('y1', -10)
-      .attr('x2', 0.001)
-      .attr('y2', (height / 2) + 100)
+      .attr('x2', 0)
+      .attr('y2', 20)
+      .attr('x1', 0.001)
+      .attr('y1', (height / 2) + 150)
       .style('stroke', '#d3d3d3');
 
     main.append('line')
       .attr('class', 'future-line')
       .attr('x1', 0)
-      .attr('y1', (height / 2) + 100)
+      .attr('y1', 20)
       .attr('x2', 0.001)
-      .attr('y2', (height / 2) + 150)
-      .style('stroke', '#f96465')
-      .style('stroke-dasharray', ('3, 3'))
+      .attr('y2', -10)
+      .style('stroke', '#d3d3d3')
+      .style('stroke-dasharray', ('2, 2'))
       .attr('marker-end', 'url(#triangle)');
 
 
@@ -158,7 +158,7 @@ class Timeline extends Component {
       },
     ];
 
-    const timelineScale = d3.scaleLinear().domain([2007, 2019]).range([50, 600]);
+    const timelineScale = d3.scaleLinear().domain([2007, 2019]).range([600, 50]);
     // create circle wrapper
     const outerCircleWrapper = main.append('g').attr('class', 'outer-circle-wrapper');
 
@@ -390,9 +390,9 @@ class Timeline extends Component {
       .style('opacity', 1);
     // mit note
     const points2 = [
-      [8, -3],
-      [50, -30],
-      [80, -35],
+      [8, 3],
+      [50, 30],
+      [80, 35],
     ];
     const path2Data = lineGenerator(points2);
     const mitNote = d3.select('.education-circle-MIT').append('g').attr('class', 'mit-note');
@@ -403,7 +403,7 @@ class Timeline extends Component {
       .style('opacity', 1);
     mitNote.append('rect')
       .attr('x', 85)
-      .attr('y', -45)
+      .attr('y', 20)
       .attr('width', 5)
       .attr('height', 30)
       .style('fill', '#f27c07')
@@ -411,13 +411,13 @@ class Timeline extends Component {
     mitNote.append('text')
       .attr('class', 'note-top')
       .attr('x', 95)
-      .attr('y', -33)
+      .attr('y', 31)
       .text('MicoMaster Candidate')
       .style('opacity', 1);
     mitNote.append('text')
       .attr('class', 'note-down')
       .attr('x', 95)
-      .attr('y', -20)
+      .attr('y', 45)
       .text('MIT\u00A0|\u00A02018 - Present')
       .style('opacity', 1);
 
@@ -504,10 +504,10 @@ class Timeline extends Component {
       .attr('marker-end', 'url(#pointer-triangle)');
 
     pointerNote.append('text')
-      .attr('class', 'note-top')
-      .attr('x', 95)
+      .attr('class', 'pointer-note')
+      .attr('x', 70)
       .attr('y', -43)
-      .text('Try to hover over me!')
+      .text('Try to hover over me!!!')
       .style('opacity', 1);
   }
 

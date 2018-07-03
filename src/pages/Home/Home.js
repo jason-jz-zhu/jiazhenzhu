@@ -26,7 +26,7 @@ class Home extends Component {
           </tbody>
         </table>
         <br /><br />
-        <font face="verdana" size="2">Data Researcher and Data Enginneer</font>
+        <font face="verdana" size="2">Data Researcher and Data Engineer</font>
         <br />
         <font face="verdana" size="2">Email: jason.jz.zhu at gmail dot com</font>
         <br />

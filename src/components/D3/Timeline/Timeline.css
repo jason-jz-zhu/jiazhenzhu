@@ -25,8 +25,8 @@
   fill: #9f9f9f;
 }
 
+.past,
 .future,
-.history,
 .timeline-side-text {
   font-size: 15px;
   text-anchor: middle;
@@ -35,7 +35,7 @@
 }
 
 .circle-legend-text {
-  font-size: 5px;
+  font-size: 3px;
   text-anchor: middle;
   font-family: 'PT Sans Narrow', sans-serif;
 }
@@ -47,6 +47,13 @@
 
 .note-top {
   font-size: 10px;
+  fill: #444444;
+  font-weight: bold;
+  font-family: 'Dancing Script', cursive;
+}
+
+.pointer-note {
+  font-size: 12px;
   fill: #444444;
   font-weight: bold;
   font-family: 'Dancing Script', cursive;

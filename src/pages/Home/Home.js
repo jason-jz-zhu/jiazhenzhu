@@ -50,10 +50,10 @@ class Home extends Component {
         <section className="bioWrapper">
           <h2 className="underline">Biography [<a href="/Jiazhen_Zhu_Resume.pdf">CV</a>]</h2>
           <p>
+            Currently, I am seeking MicroMaster of Data Science from <span className="education-link"><a href="https://micromasters.mit.edu/ds/">MIT</a></span>, and&nbsp;
             I am a research assistant (volunteer) under Data Discovery Lab at <span className="education-link"><a href="http://myweb.ttu.edu/fjin/">TTU</a></span>,&nbsp;
-            under the supervision of Prof. <span className="education-link"><a href="http://www.depts.ttu.edu/cs/faculty/fang_jin/index.php">Fang Jin</a></span>.
-            Currently, I am seeking MicroMaster of Data Science from <span className="education-link"><a href="https://micromasters.mit.edu/ds/">MIT</a></span>, also I am a Data Scientist
-            and Data Engineer at <span className="working-link"><a href="https://nete.com/">NETE</a></span>.
+            under the supervision of Prof. <span className="education-link"><a href="http://www.depts.ttu.edu/cs/faculty/fang_jin/index.php">Fang Jin</a></span>.&nbsp;
+            Also I am a Data Scientist and Data Engineer at <span className="working-link"><a href="https://nete.com/">NETE</a></span>.
             Previously, I got my MicroMaster of Analytics from <span className="education-link"><a href="https://pe.gatech.edu/master-science-degrees/analytics/analytics-essential-tools-and-methods-micromasters">Gatech</a></span> in 2018.
             And I earned my Master of Computer Science from <span className="education-link"><a href="https://www.gwu.edu/">the George Washington University</a></span> in 2013
             and Bachelor of Computer Science from <span className="education-link"><a href="http://en.shu.edu.cn/Default.aspx">Shanghai University</a></span> in 2011, where I worked with <span className="education-link"><a href="http://iic.shu.edu.cn/en/shiyanshi_renyuan_fyc.html">Prof. Yuchun Fang</a></span>.

@@ -31,7 +31,8 @@ class Home extends Component {
         <font face="verdana" size="2">Email: jason.jz.zhu at gmail dot com</font>
         <br />
         <br />
-        <font face="courier" size="2" color="#888"><p>“There is no failure except in no longer trying.”</p></font>
+        <br />
+        <font face="courier" size="2" color="#888"><p>"If you can dream it, you can do it. &nbsp;- Walt Disney"</p></font>
       </div>
     );
 

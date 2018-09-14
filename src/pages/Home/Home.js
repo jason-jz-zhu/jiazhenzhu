@@ -66,9 +66,6 @@ class Home extends Component {
             research is the design of system using practical machine learning workflows.
             I do whole workflow from data engineering to data science such as validate/clean/aggregation data, feature engineering, model selection, and data visualization.
           </p>
-          <p>
-            <b>I am looking for PhD opportunity on machine learning in different area or the design of system using practical machine learning workflows.</b>
-          </p>
         </section>
         <section className="newsWrapper">
           <h2 className="underline">News</h2>

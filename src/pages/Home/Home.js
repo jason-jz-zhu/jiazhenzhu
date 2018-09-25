@@ -70,9 +70,11 @@ class Home extends Component {
         <section className="newsWrapper">
           <h2 className="underline">News</h2>
           <ul>
-            <li>[06/2018] I will work on crop prediction project using GANs. </li>
+            <li>[09/2018] One Paper on coordinating volunteers in disaster relief using reinforcement learning has been submitted to <b>Big Data</b>. </li>
+            <li>[08/2018] I begin to learn the MicoMaster for Data Science from MIT. </li>
+            <li>[06/2018] I will work on crop prediction project using Mutli-Task Learning and Gaussian Processes. </li>
             <li>[06/2018] I have successfully earned my MicroMaster of Analytics from Gatech. </li>
-            <li>[05/2018] One Paper on coordinating volunteers in disaster relief using reinforcement learning has been submitted to <b>ICDM</b>. </li>
+            <li>[05/2018] I will work on Coordinating Disaster Emergency Response using Heuristic Reinforcement Learning. </li>
             <li>[05/2018] I will come to Data Discovery Lab at TTU as research assistant (volunteer) to work on deep learning. </li>
             <li>[08/2014] I will come to NETE as data scientist and data engineer. </li>
             <li>[08/2014] I have successfully earned my Master of Computer Science from The George Washington University. </li>
@@ -88,11 +90,11 @@ class Home extends Component {
           <h3>2018</h3>
           <ul>
             <li>
-              Coordinating Disaster Emergency Response withHeuristic Reinforcement Learning
+              Coordinating Disaster Emergency Response with Heuristic Reinforcement Learning
               <br />
               Yang Zhou, Nguyen Long, <b>Jiazhen Zhu</b>, Fang Jin
               <br />
-              IEEE International Conference on Data Mining (ICDM), 2018. (Submitted)
+              IEEE International Conference on Big Data (Big Data), 2018. (Submitted)
               <br />
             </li>
           </ul>

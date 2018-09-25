@@ -5,7 +5,7 @@ class App extends Component {
   render() {
     return (
       <div className="footer">
-        © Jiazhen Zhu | Last updated: 07/2018
+        © Jiazhen Zhu | Last updated: 09/2018
       </div>
     );
   }

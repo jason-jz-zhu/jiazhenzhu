@@ -54,7 +54,7 @@ class Home extends Component {
             Currently, I am seeking MicroMaster of Data Science from <span className="education-link"><a href="https://micromasters.mit.edu/ds/">MIT</a></span>, and&nbsp;
             I am a research assistant (volunteer) under Data Discovery Lab at <span className="education-link"><a href="http://myweb.ttu.edu/fjin/">TTU</a></span>,&nbsp;
             under the supervision of Prof. <span className="education-link"><a href="http://www.depts.ttu.edu/cs/faculty/fang_jin/index.php">Fang Jin</a></span>.&nbsp;
-            Also I am a Data Scientist and Data Engineer at <span className="working-link"><a href="https://nete.com/">NETE</a></span>.
+            Also I am a Data Engineer at <span className="working-link"><a href="https://nete.com/">NETE</a></span>.
             Previously, I got my MicroMaster of Analytics from <span className="education-link"><a href="https://pe.gatech.edu/master-science-degrees/analytics/analytics-essential-tools-and-methods-micromasters">Gatech</a></span> in 2018.
             And I earned my Master of Computer Science from <span className="education-link"><a href="https://www.gwu.edu/">the George Washington University</a></span> in 2013
             and Bachelor of Computer Science from <span className="education-link"><a href="http://en.shu.edu.cn/Default.aspx">Shanghai University</a></span> in 2011, where I worked with <span className="education-link"><a href="http://iic.shu.edu.cn/en/shiyanshi_renyuan_fyc.html">Prof. Yuchun Fang</a></span>.
@@ -63,13 +63,14 @@ class Home extends Component {
           <p>
             I am interested in data, methods and models that can be used to understand the communication between people and computer,
             human behavior in networks, analysis of social networks etc. Another interesting area of
-            research is the design of system using practical machine learning workflows.
-            I do whole workflow from data engineering to data science such as validate/clean/aggregation data, feature engineering, model selection, and data visualization.
+            research is the design of system using practical data engineering workflows.
+            I do whole workflow for data engineering such as validate/clean/aggregation data, data modeling and data visualization.
           </p>
         </section>
         <section className="newsWrapper">
           <h2 className="underline">News</h2>
           <ul>
+            <li>[12/2018] One Paper has been accepted by <b>PAKDD</b>. </li>
             <li>[09/2018] One Paper on coordinating volunteers in disaster relief using reinforcement learning has been submitted to <b>Big Data</b>. </li>
             <li>[08/2018] I begin to learn the MicoMaster for Data Science from MIT. </li>
             <li>[06/2018] I will work on crop prediction project using Mutli-Task Learning and Gaussian Processes. </li>
@@ -90,11 +91,21 @@ class Home extends Component {
           <h3>2018</h3>
           <ul>
             <li>
-              Coordinating Disaster Emergency Response with Heuristic Reinforcement Learning
+              Spatial-temporal Multi-Task Learning for Within-field Cotton Yield Prediction
+              <br />
+              Long Nguyen, <b>Jiazhen Zhu</b>, Zhe Lin, Hanxiang Du, Zhou Yang, Wenxuan Guo, and Fang Jin
+              <br />
+              The Pacific-Asia Conference on Knowledge Discovery and Data Mining (PAKDD) (Accepted)
+              <br />
+            </li>
+          </ul>
+          <ul>
+            <li>
+              <a href="https://arxiv.org/pdf/1811.05010.pdf">Coordinating Disaster Emergency Response with Heuristic Reinforcement Learning</a>
               <br />
               Yang Zhou, Nguyen Long, <b>Jiazhen Zhu</b>, Fang Jin
               <br />
-              IEEE International Conference on Big Data (Big Data), 2018. (Submitted)
+              arxiv (Submitted)
               <br />
             </li>
           </ul>

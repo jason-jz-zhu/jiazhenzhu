@@ -77,7 +77,7 @@ class Home extends Component {
             <li>[06/2018] I have successfully earned my MicroMaster of Analytics from Gatech. </li>
             <li>[05/2018] I will work on Coordinating Disaster Emergency Response using Heuristic Reinforcement Learning. </li>
             <li>[05/2018] I will come to Data Discovery Lab at TTU as research assistant (volunteer) to work on deep learning. </li>
-            <li>[08/2014] I will come to NETE as data scientist and data engineer. </li>
+            <li>[08/2014] I will come to NETE as data engineer and data scientist. </li>
             <li>[08/2014] I have successfully earned my Master of Computer Science from The George Washington University. </li>
             <li>[01/2014] I will join the team in GWU to analyze the relationsihp between market environment and goverment policy. </li>
             <li>[01/2013] I will come to The George Washington University for my master study this spring. </li>
@@ -91,11 +91,11 @@ class Home extends Component {
           <h3>2018</h3>
           <ul>
             <li>
-              Spatial-temporal Multi-Task Learning for Within-field Cotton Yield Prediction
+              <a href="/paper_647.pdf">Spatial-temporal Multi-Task Learning for Within-field Cotton Yield Prediction</a>
               <br />
               Long Nguyen, <b>Jiazhen Zhu</b>, Zhe Lin, Hanxiang Du, Zhou Yang, Wenxuan Guo, and Fang Jin
               <br />
-              The Pacific-Asia Conference on Knowledge Discovery and Data Mining (PAKDD) (Accepted)
+              The Pacific-Asia Conference on Knowledge Discovery and Data Mining (PAKDD)
               <br />
             </li>
           </ul>
@@ -105,7 +105,7 @@ class Home extends Component {
               <br />
               Yang Zhou, Nguyen Long, <b>Jiazhen Zhu</b>, Fang Jin
               <br />
-              arxiv (Submitted)
+              arxiv
               <br />
             </li>
           </ul>

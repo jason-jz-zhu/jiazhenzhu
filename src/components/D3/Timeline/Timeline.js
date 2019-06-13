@@ -380,7 +380,7 @@ class Timeline extends Component {
       .attr('class', 'note-top')
       .attr('x', 95)
       .attr('y', -33)
-      .text('Data Scientist')
+      .text('Data Engineer')
       .style('opacity', 1);
     neteNote.append('text')
       .attr('class', 'note-down')

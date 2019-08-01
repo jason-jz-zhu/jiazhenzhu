@@ -51,7 +51,7 @@ class Home extends Component {
         <section className="bioWrapper">
           <h2 className="underline">Biography [<a href="/Jiazhen_Zhu_Resume.pdf">CV</a>]</h2>
           <p>
-            Currently, I am seeking MicroMaster of Data Science from <span className="education-link"><a href="https://micromasters.mit.edu/ds/">MIT</a></span>, and&nbsp;
+            Currently, I am seeking Master of Science Analytics from <span className="education-link"><a href="https://pe.gatech.edu/degrees/analytics">Gatech</a></span>, and&nbsp;
             I am a research assistant (volunteer) under Data Discovery Lab at <span className="education-link"><a href="http://myweb.ttu.edu/fjin/">TTU</a></span>,&nbsp;
             under the supervision of Prof. <span className="education-link"><a href="http://www.depts.ttu.edu/cs/faculty/fang_jin/index.php">Fang Jin</a></span>.&nbsp;
             Also I am a Data Engineer at <span className="working-link"><a href="https://nete.com/">NETE</a></span>.
@@ -70,6 +70,8 @@ class Home extends Component {
         <section className="newsWrapper">
           <h2 className="underline">News</h2>
           <ul>
+            <li>[07/2019] I will join <b>Walmart Labs</b> as Software Engineer, Data. </li>
+            <li>[06/2019] I will begin data science learning at <b>Gatech</b> on this fall. </li>
             <li>[12/2018] One Paper has been accepted by <b>PAKDD</b>. </li>
             <li>[09/2018] One Paper on coordinating volunteers in disaster relief using reinforcement learning has been submitted to <b>Big Data</b>. </li>
             <li>[08/2018] I begin to learn the MicoMaster for Data Science from MIT. </li>

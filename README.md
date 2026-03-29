@@ -11,7 +11,25 @@ Personal site and blog for Jiazhen Zhu — writing about AI productivity systems
 - [MDX](https://mdxjs.com) — blog content with component support
 - [Shiki](https://shiki.style) — syntax highlighting (dual light/dark theme)
 - [satori](https://github.com/vercel/satori) — auto-generated OG images
-- [Netlify](https://netlify.com) — hosting and deployment
+
+## Infrastructure
+
+| Layer | Service | Notes |
+|-------|---------|-------|
+| Hosting | [Vercel](https://vercel.com) (Hobby/free) | Auto-deploys from `master` branch |
+| DNS | [Netlify DNS](https://app.netlify.com) | Nameservers: `dns1-4.p08.nsone.net` |
+| Email | [ImprovMX](https://improvmx.com) (free) | `*@jiazhenzhu.com` → Gmail |
+| Domain | External registrar | `jiazhenzhu.com` |
+
+### DNS Records (managed at Netlify DNS)
+
+| Type | Name | Value |
+|------|------|-------|
+| A | @ | `216.198.79.1` (Vercel) |
+| CNAME | www | `7f76986d8a89c938.vercel-dns-017.com` |
+| MX | @ | `mx1.improvmx.com` (priority 10) |
+| MX | @ | `mx2.improvmx.com` (priority 20) |
+| TXT | @ | `v=spf1 include:spf.improvmx.com ~all` |
 
 ## Local Development
 
@@ -55,4 +73,4 @@ An OG image is auto-generated at `/og/[slug].png` for social sharing.
 
 ## Deployment
 
-Pushes to `master` auto-deploy via Netlify. Build config is in `netlify.toml`.
+Pushes to `master` auto-deploy via Vercel. Netlify config (`netlify.toml`) is kept for reference but no longer used for production.

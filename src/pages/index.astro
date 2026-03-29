@@ -1,0 +1,73 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PostCard from '../components/PostCard.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 5);
+---
+<BaseLayout title="Jiazhen Zhu — Developer & Creator">
+  <section class="mb-16">
+    <h1 class="text-4xl sm:text-5xl font-bold tracking-tight mb-4">
+      Hey, I'm Jiazhen <span class="inline-block animate-[wave_2s_ease-in-out_infinite] origin-[70%_70%]">👋</span>
+    </h1>
+    <p class="text-lg leading-relaxed max-w-2xl" style="color: var(--text-secondary);">
+      I'm a developer who loves building things for the web.
+      I write about technology, web development, and ideas that interest me.
+    </p>
+    <div class="flex gap-4 mt-6">
+      <a
+        href="/blog"
+        class="text-sm font-medium px-4 py-2 rounded-lg transition-colors"
+        style="background-color: var(--accent); color: white;"
+      >
+        Read my blog
+      </a>
+      <a
+        href="/about"
+        class="text-sm font-medium px-4 py-2 rounded-lg border transition-colors hover:bg-[var(--bg-secondary)]"
+        style="border-color: var(--border);"
+      >
+        About me
+      </a>
+    </div>
+  </section>
+
+  <section>
+    <div class="flex items-baseline justify-between mb-6">
+      <h2 class="text-2xl font-semibold tracking-tight">Recent Posts</h2>
+      <a
+        href="/blog"
+        class="text-sm hover:underline underline-offset-2"
+        style="color: var(--accent);"
+      >
+        View all &rarr;
+      </a>
+    </div>
+    <div class="divide-y" style="border-color: var(--border);">
+      {posts.map((post) => (
+        <PostCard
+          title={post.data.title}
+          description={post.data.description}
+          date={post.data.date}
+          slug={post.slug}
+          tags={post.data.tags}
+        />
+      ))}
+    </div>
+    {posts.length === 0 && (
+      <p class="text-sm py-8 text-center" style="color: var(--text-secondary);">
+        No posts yet. Stay tuned!
+      </p>
+    )}
+  </section>
+</BaseLayout>
+
+<style>
+  @keyframes wave {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(20deg); }
+    75% { transform: rotate(-15deg); }
+  }
+</style>

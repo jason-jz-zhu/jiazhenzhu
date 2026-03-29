@@ -1,0 +1,60 @@
+---
+title: "Building My Personal Site with Astro"
+description: "A deep dive into why I chose Astro for my personal website and how I set everything up."
+date: 2026-03-27
+tags: ["astro", "web-dev", "tutorial"]
+---
+
+I recently rebuilt my personal website using [Astro](https://astro.build), and I couldn't be happier with the result.
+
+## Why Astro?
+
+After years of using React-based frameworks, I wanted something that:
+
+1. Ships **zero JavaScript** by default
+2. Has first-class **Markdown/MDX** support
+3. Delivers **excellent performance** out of the box
+4. Supports **content collections** with type safety
+
+Astro checks all these boxes.
+
+## The Setup
+
+The tech stack is simple:
+
+- **Astro** for the framework
+- **Tailwind CSS** for styling
+- **MDX** for blog posts
+- **Shiki** for syntax highlighting
+
+```javascript
+// astro.config.mjs
+import { defineConfig } from 'astro/config';
+import mdx from '@astrojs/mdx';
+import tailwind from '@astrojs/tailwind';
+
+export default defineConfig({
+  integrations: [mdx(), tailwind()],
+});
+```
+
+## Content Collections
+
+One of my favorite features is content collections. You define a schema, and Astro validates your frontmatter at build time:
+
+```typescript
+const blog = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    date: z.coerce.date(),
+    tags: z.array(z.string()),
+  }),
+});
+```
+
+## Performance Results
+
+The result? A perfect Lighthouse score across the board. No client-side JavaScript means instant page loads.
+
+If you're building a content-focused site, I highly recommend giving Astro a try.

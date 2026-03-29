@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg: #fafafa;
+    --bg-secondary: #f0f0f0;
+    --text: #1a1a1a;
+    --text-secondary: #666666;
+    --border: #e5e5e5;
+    --accent: #6366f1;
+    --accent-light: #818cf8;
+  }
+
+  .dark {
+    --bg: #0a0a0a;
+    --bg-secondary: #171717;
+    --text: #ededed;
+    --text-secondary: #a3a3a3;
+    --border: #262626;
+    --accent: #818cf8;
+    --accent-light: #a5b4fc;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  ::selection {
+    background-color: var(--accent);
+    color: white;
+  }
+}
+
+@layer components {
+  .prose-custom {
+    @apply leading-relaxed;
+  }
+
+  .prose-custom h1,
+  .prose-custom h2,
+  .prose-custom h3 {
+    @apply font-semibold tracking-tight;
+    color: var(--text);
+  }
+
+  .prose-custom h1 { @apply text-3xl mt-10 mb-4; }
+  .prose-custom h2 { @apply text-2xl mt-8 mb-3; }
+  .prose-custom h3 { @apply text-xl mt-6 mb-2; }
+
+  .prose-custom p {
+    @apply my-4 leading-7;
+    color: var(--text);
+  }
+
+  .prose-custom a {
+    color: var(--accent);
+    @apply underline underline-offset-2 decoration-1;
+  }
+
+  .prose-custom a:hover {
+    color: var(--accent-light);
+  }
+
+  .prose-custom ul, .prose-custom ol {
+    @apply my-4 pl-6;
+    color: var(--text);
+  }
+
+  .prose-custom ul { @apply list-disc; }
+  .prose-custom ol { @apply list-decimal; }
+  .prose-custom li { @apply my-1; }
+
+  .prose-custom blockquote {
+    @apply border-l-4 pl-4 my-4 italic;
+    border-color: var(--accent);
+    color: var(--text-secondary);
+  }
+
+  .prose-custom code {
+    @apply text-sm px-1.5 py-0.5 rounded;
+    background-color: var(--bg-secondary);
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  }
+
+  .prose-custom pre {
+    @apply rounded-lg p-4 my-6 overflow-x-auto text-sm;
+    border: 1px solid var(--border);
+  }
+
+  .prose-custom pre code {
+    @apply p-0 bg-transparent;
+  }
+
+  .prose-custom img {
+    @apply rounded-lg my-6;
+  }
+
+  .prose-custom hr {
+    @apply my-8;
+    border-color: var(--border);
+  }
+
+  .prose-custom table {
+    @apply w-full my-6 text-sm;
+  }
+
+  .prose-custom th {
+    @apply text-left p-2 font-semibold;
+    border-bottom: 2px solid var(--border);
+  }
+
+  .prose-custom td {
+    @apply p-2;
+    border-bottom: 1px solid var(--border);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

@@ -1,9 +1,11 @@
 ---
 const currentYear = new Date().getFullYear();
 const socialLinks = [
-  { href: 'https://github.com/jiazhenzhu', label: 'GitHub', icon: 'github' },
-  { href: 'https://twitter.com/jiazhenzhu', label: 'Twitter', icon: 'twitter' },
-  { href: 'mailto:hello@jiazhenzhu.com', label: 'Email', icon: 'email' },
+  { href: 'https://github.com/jason-jz-zhu', label: 'GitHub' },
+  { href: 'https://medium.com/@JiazhenZhu', label: 'Medium' },
+  { href: 'https://substack.com/@jiazhenzhu', label: 'Substack' },
+  { href: 'https://www.linkedin.com/in/jiazhen-zhu', label: 'LinkedIn' },
+  { href: 'mailto:hello@jiazhenzhu.com', label: 'Email' },
 ];
 ---
 <footer class="border-t mt-20" style="border-color: var(--border);">
@@ -13,7 +15,7 @@ const socialLinks = [
         &copy; {currentYear} Jiazhen Zhu
       </p>
       <div class="flex items-center gap-4">
-        {socialLinks.map(({ href, label, icon }) => (
+        {socialLinks.map(({ href, label }) => (
           <a
             href={href}
             target={href.startsWith('mailto') ? undefined : '_blank'}

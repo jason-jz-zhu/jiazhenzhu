@@ -6,38 +6,44 @@ import { getCollection } from 'astro:content';
 const posts = (await getCollection('blog', ({ data }) => !data.draft))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
-const allTags = [...new Set(posts.flatMap((post) => post.data.tags))].sort();
+const tagMap: Record<string, string> = {
+  'ai-productivity': 'AI Productivity',
+  'ai': 'AI',
+  'startup': 'Startup',
+  'career': 'Career',
+  'ai-strategy': 'AI Strategy',
+  'data-ml-infra': 'Data/ML Infra',
+};
+const displayTags = Object.keys(tagMap);
 ---
-<BaseLayout title="Blog — Jiazhen Zhu" description="Articles about web development, technology, and design.">
+<BaseLayout title="Blog — Jiazhen Zhu" description="Writing about AI productivity systems, data infrastructure, and the operational side of working with AI.">
   <header class="mb-10">
     <h1 class="text-3xl sm:text-4xl font-bold tracking-tight mb-3">Blog</h1>
     <p style="color: var(--text-secondary);">
-      Thoughts on technology, web development, and things I'm learning.
+      Writing about AI productivity systems, data infrastructure, and the operational side of AI.
     </p>
   </header>
 
-  {allTags.length > 0 && (
-    <div class="flex flex-wrap gap-2 mb-8">
+  <div class="flex flex-wrap gap-2 mb-8">
+    <button
+      class="tag-filter text-xs px-3 py-1 rounded-full border transition-colors active-tag"
+      data-tag="all"
+      style="border-color: var(--border);"
+    >
+      All
+    </button>
+    {displayTags.map((tag) => (
       <button
-        class="tag-filter text-xs px-3 py-1 rounded-full border transition-colors active-tag"
-        data-tag="all"
+        class="tag-filter text-xs px-3 py-1 rounded-full border transition-colors"
+        data-tag={tag}
         style="border-color: var(--border);"
       >
-        All
+        {tagMap[tag]}
       </button>
-      {allTags.map((tag) => (
-        <button
-          class="tag-filter text-xs px-3 py-1 rounded-full border transition-colors"
-          data-tag={tag}
-          style="border-color: var(--border);"
-        >
-          {tag}
-        </button>
-      ))}
-    </div>
-  )}
+    ))}
+  </div>
 
-  <div class="divide-y" style="border-color: var(--border);" id="posts-list">
+  <div class="divide-y divide-[var(--border)]" id="posts-list">
     {posts.map((post) => (
       <div data-tags={post.data.tags.join(',')}>
         <PostCard

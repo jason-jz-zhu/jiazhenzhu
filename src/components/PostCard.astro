@@ -9,10 +9,26 @@ interface Props {
 
 const { title, description, date, slug, tags = [] } = Astro.props;
 
+const tagLabels: Record<string, string> = {
+  'ai': 'AI',
+  'ai-productivity': 'AI Productivity',
+  'ai-agents': 'AI Agents',
+  'ai-strategy': 'AI Strategy',
+  'startup': 'Startup',
+  'career': 'Career',
+  'claude-code': 'Claude Code',
+  'data-ml-infra': 'Data/ML Infra',
+  'developer-tools': 'Developer Tools',
+  'yc': 'YC',
+  'personal-ip': 'Personal IP',
+};
+const formatTag = (tag: string) => tagLabels[tag] || tag.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+
 const formattedDate = date.toLocaleDateString('en-US', {
   year: 'numeric',
   month: 'short',
   day: 'numeric',
+  timeZone: 'UTC',
 });
 ---
 <article class="group">
@@ -39,7 +55,7 @@ const formattedDate = date.toLocaleDateString('en-US', {
             class="text-xs px-2 py-0.5 rounded-full"
             style="background-color: var(--bg-secondary); color: var(--text-secondary);"
           >
-            {tag}
+            {formatTag(tag)}
           </span>
         ))}
       </div>

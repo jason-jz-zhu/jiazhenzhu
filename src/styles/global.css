@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -11,8 +9,8 @@
     --text: #1a1a1a;
     --text-secondary: #666666;
     --border: #e5e5e5;
-    --accent: #6366f1;
-    --accent-light: #818cf8;
+    --accent: #0D9488;
+    --accent-light: #14B8A6;
   }
 
   .dark {
@@ -21,8 +19,8 @@
     --text: #ededed;
     --text-secondary: #a3a3a3;
     --border: #262626;
-    --accent: #818cf8;
-    --accent-light: #a5b4fc;
+    --accent: #14B8A6;
+    --accent-light: #5EEAD4;
   }
 
   html {
@@ -96,6 +94,12 @@
   .prose-custom pre {
     @apply rounded-lg p-4 my-6 overflow-x-auto text-sm;
     border: 1px solid var(--border);
+  }
+
+  .dark .astro-code,
+  .dark .astro-code span {
+    color: var(--shiki-dark) !important;
+    background-color: var(--shiki-dark-bg) !important;
   }
 
   .prose-custom pre code {

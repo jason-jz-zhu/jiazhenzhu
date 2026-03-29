@@ -1,0 +1,92 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostCard from '../../components/PostCard.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const tagMap: Record<string, string> = {
+  'ai-productivity': 'AI Productivity',
+  'ai': 'AI',
+  'startup': 'Startup',
+  'career': 'Career',
+  'ai-strategy': 'AI Strategy',
+  'data-ml-infra': 'Data/ML Infra',
+};
+const displayTags = Object.keys(tagMap);
+---
+<BaseLayout title="Blog — Jiazhen Zhu" description="Writing about AI productivity systems, data infrastructure, and the operational side of working with AI.">
+  <header class="mb-10">
+    <h1 class="text-3xl sm:text-4xl font-bold tracking-tight mb-3">Blog</h1>
+    <p style="color: var(--text-secondary);">
+      Writing about AI productivity systems, data infrastructure, and the operational side of AI.
+    </p>
+  </header>
+
+  <div class="flex flex-wrap gap-2 mb-8">
+    <button
+      class="tag-filter text-xs px-3 py-1 rounded-full border transition-colors active-tag"
+      data-tag="all"
+      style="border-color: var(--border);"
+    >
+      All
+    </button>
+    {displayTags.map((tag) => (
+      <button
+        class="tag-filter text-xs px-3 py-1 rounded-full border transition-colors"
+        data-tag={tag}
+        style="border-color: var(--border);"
+      >
+        {tagMap[tag]}
+      </button>
+    ))}
+  </div>
+
+  <div class="divide-y divide-[var(--border)]" id="posts-list">
+    {posts.map((post) => (
+      <div data-tags={post.data.tags.join(',')}>
+        <PostCard
+          title={post.data.title}
+          description={post.data.description}
+          date={post.data.date}
+          slug={post.slug}
+          tags={post.data.tags}
+        />
+      </div>
+    ))}
+  </div>
+
+  {posts.length === 0 && (
+    <p class="text-sm py-12 text-center" style="color: var(--text-secondary);">
+      No posts yet. Check back soon!
+    </p>
+  )}
+</BaseLayout>
+
+<style>
+  .active-tag {
+    background-color: var(--accent) !important;
+    color: white !important;
+    border-color: var(--accent) !important;
+  }
+</style>
+
+<script is:inline>
+  document.querySelectorAll('.tag-filter').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const tag = btn.dataset.tag;
+
+      document.querySelectorAll('.tag-filter').forEach((b) => b.classList.remove('active-tag'));
+      btn.classList.add('active-tag');
+
+      document.querySelectorAll('#posts-list > div').forEach((post) => {
+        if (tag === 'all' || post.dataset.tags.split(',').includes(tag)) {
+          post.style.display = '';
+        } else {
+          post.style.display = 'none';
+        }
+      });
+    });
+  });
+</script>

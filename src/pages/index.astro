@@ -1,0 +1,125 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PostCard from '../components/PostCard.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3);
+
+const topics = [
+  {
+    title: 'AI Productivity Systems',
+    description: 'Building workflows that make AI agents genuinely useful in day-to-day work.',
+  },
+  {
+    title: 'Data & ML Infrastructure',
+    description: 'Lessons from building pipelines, platforms, and ML systems at scale.',
+  },
+  {
+    title: 'Shipping AI to Production',
+    description: 'What it actually takes to move from prototype to reliable, running systems.',
+  },
+  {
+    title: 'Startup & Entrepreneurship',
+    description: 'Notes on building products, finding ideas, and the lessons from YC and beyond.',
+  },
+  {
+    title: 'Career & Mindset',
+    description: 'Navigating tech careers, staying sharp, and thinking clearly under uncertainty.',
+  },
+  {
+    title: 'AI Strategy for Leaders',
+    description: 'How non-technical leaders can evaluate, adopt, and invest in AI with confidence.',
+  },
+];
+---
+<BaseLayout title="Jiazhen Zhu — Data & AI">
+  <!-- Hero -->
+  <section class="mb-20">
+    <h1 class="text-4xl sm:text-5xl font-bold tracking-tight mb-5 leading-[1.15]">
+      Jiazhen Zhu
+    </h1>
+    <p class="text-lg leading-relaxed max-w-2xl mb-6" style="color: var(--text-secondary);">
+      Most AI projects don't fail because of the model. They fail at the messy middle:
+      data pipelines, production infrastructure, organizational alignment.
+      I've spent 15+ years working in that middle, and I write about what I've learned.
+    </p>
+    <p class="text-sm leading-relaxed max-w-2xl mb-8" style="color: var(--text-secondary);">
+      Currently at <strong style="color: var(--text);">Airbnb</strong>.
+      Previously at <strong style="color: var(--text);">Capital One</strong> and
+      <strong style="color: var(--text);">Walmart Global Tech</strong>.
+      MBA from <strong style="color: var(--text);">NYU Stern</strong>.
+      MS in Analytics from <strong style="color: var(--text);">Georgia Tech</strong>.
+      Adjunct faculty at <strong style="color: var(--text);">Northeastern University</strong>.
+    </p>
+    <div class="flex flex-wrap gap-4">
+      <a
+        href="/blog"
+        class="text-sm font-medium px-5 py-2.5 rounded-lg transition-opacity hover:opacity-90"
+        style="background-color: var(--accent); color: white;"
+      >
+        Read my writing
+      </a>
+      <a
+        href="/about"
+        class="text-sm font-medium px-5 py-2.5 rounded-lg border transition-colors hover:bg-[var(--bg-secondary)]"
+        style="border-color: var(--border);"
+      >
+        About me
+      </a>
+    </div>
+  </section>
+
+  <!-- Topics -->
+  <section class="mb-20">
+    <h2 class="text-sm font-medium uppercase tracking-widest mb-6" style="color: var(--text-secondary);">
+      What I Write About
+    </h2>
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
+      {topics.map(({ title, description }) => (
+        <div
+          class="p-5 rounded-xl border"
+          style="border-color: var(--border);"
+        >
+          <h3 class="font-medium mb-2 text-sm">{title}</h3>
+          <p class="text-sm leading-relaxed" style="color: var(--text-secondary);">
+            {description}
+          </p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Recent Posts -->
+  <section>
+    <div class="flex items-baseline justify-between mb-6">
+      <h2 class="text-sm font-medium uppercase tracking-widest" style="color: var(--text-secondary);">
+        Recent Posts
+      </h2>
+      <a
+        href="/blog"
+        class="text-sm hover:underline underline-offset-2"
+        style="color: var(--accent);"
+      >
+        View all &rarr;
+      </a>
+    </div>
+    <div class="divide-y divide-[var(--border)]">
+      {posts.map((post) => (
+        <PostCard
+          title={post.data.title}
+          description={post.data.description}
+          date={post.data.date}
+          slug={post.slug}
+          tags={post.data.tags}
+        />
+      ))}
+    </div>
+    {posts.length === 0 && (
+      <p class="text-sm py-8 text-center" style="color: var(--text-secondary);">
+        No posts yet. Stay tuned!
+      </p>
+    )}
+  </section>
+</BaseLayout>

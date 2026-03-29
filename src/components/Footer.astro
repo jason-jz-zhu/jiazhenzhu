@@ -1,0 +1,33 @@
+---
+const currentYear = new Date().getFullYear();
+const socialLinks = [
+  { href: 'https://github.com/jason-jz-zhu', label: 'GitHub' },
+  { href: 'https://medium.com/@JiazhenZhu', label: 'Medium' },
+  { href: 'https://substack.com/@jiazhenzhu', label: 'Substack' },
+  { href: 'https://www.linkedin.com/in/jiazhen-zhu', label: 'LinkedIn' },
+  { href: 'mailto:hello@jiazhenzhu.com', label: 'Email' },
+];
+---
+<footer class="border-t mt-20" style="border-color: var(--border);">
+  <div class="max-w-3xl mx-auto px-6 py-10">
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="text-sm" style="color: var(--text-secondary);">
+        &copy; {currentYear} Jiazhen Zhu
+      </p>
+      <div class="flex items-center gap-4">
+        {socialLinks.map(({ href, label }) => (
+          <a
+            href={href}
+            target={href.startsWith('mailto') ? undefined : '_blank'}
+            rel={href.startsWith('mailto') ? undefined : 'noopener noreferrer'}
+            class="text-sm hover:underline underline-offset-2 transition-colors"
+            style="color: var(--text-secondary);"
+            aria-label={label}
+          >
+            {label}
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</footer>

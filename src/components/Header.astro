@@ -1,0 +1,43 @@
+---
+import ThemeToggle from './ThemeToggle.astro';
+
+const navLinks = [
+  { href: '/', label: 'Home' },
+  { href: '/blog', label: 'Blog' },
+  { href: '/lab', label: 'Lab' },
+  { href: '/about', label: 'About' },
+  { href: '/contact', label: 'Contact' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+<header class="sticky top-0 z-50 backdrop-blur-md border-b" style="background-color: color-mix(in srgb, var(--bg) 80%, transparent); border-color: var(--border);">
+  <nav class="max-w-3xl mx-auto px-6 h-16 flex items-center justify-between">
+    <a href="/" class="text-lg font-semibold tracking-tight hover:opacity-70 transition-opacity">
+      JZ
+    </a>
+    <div class="flex items-center gap-1">
+      {navLinks.map(({ href, label }) => (
+        <a
+          href={href}
+          class:list={[
+            'px-3 py-1.5 rounded-lg text-sm transition-colors',
+            currentPath === href || (href !== '/' && currentPath.startsWith(href))
+              ? 'font-medium'
+              : 'opacity-60 hover:opacity-100',
+          ]}
+          style={
+            currentPath === href || (href !== '/' && currentPath.startsWith(href))
+              ? 'color: var(--accent);'
+              : ''
+          }
+        >
+          {label}
+        </a>
+      ))}
+      <div class="ml-2 border-l pl-2" style="border-color: var(--border);">
+        <ThemeToggle />
+      </div>
+    </div>
+  </nav>
+</header>

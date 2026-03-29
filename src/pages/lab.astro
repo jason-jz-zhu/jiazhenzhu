@@ -1,0 +1,76 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const projects = [
+  {
+    title: 'Harness Design Experiment',
+    description: 'Tested 3 multi-agent harness architectures (Solo, Generator+Evaluator, Planner+Generator+Evaluator) on the same task to measure quality, time, and reliability differences. Found that a 3-agent harness with browser-based evaluation catches bugs that code review misses.',
+    tags: ['AI Agents', 'Data/ML Infra', 'Harness Design', 'Experiment'],
+    github: 'https://github.com/jason-jz-zhu/harness-design-experiment',
+    blog: '/blog/harness-design',
+    status: 'Completed',
+  },
+];
+---
+<BaseLayout title="Lab — Jiazhen Zhu" description="Experiments, open source projects, and ideas by Jiazhen Zhu.">
+  <header class="mb-10">
+    <h1 class="text-3xl sm:text-4xl font-bold tracking-tight mb-3">Lab</h1>
+    <p style="color: var(--text-secondary);">
+      Active experiments in AI systems, infrastructure, and tooling.
+    </p>
+  </header>
+
+  <div class="space-y-5">
+    {projects.map((project) => (
+      <div
+        class="p-6 rounded-xl border"
+        style="border-color: var(--border);"
+      >
+        <div class="flex items-start justify-between gap-4 mb-2">
+          <h2 class="text-lg font-medium">{project.title}</h2>
+          <span
+            class="text-xs px-2 py-0.5 rounded-full shrink-0"
+            style="background-color: var(--bg-secondary); color: var(--text-secondary);"
+          >
+            {project.status}
+          </span>
+        </div>
+        <p class="text-sm leading-relaxed mb-3" style="color: var(--text-secondary);">
+          {project.description}
+        </p>
+        <div class="flex flex-wrap items-center gap-3 mb-3">
+          {project.tags.map((tag) => (
+            <span
+              class="text-xs px-2 py-0.5 rounded-full"
+              style="background-color: var(--bg-secondary); color: var(--text-secondary);"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+        <div class="flex gap-4 text-sm">
+          {project.github && (
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="underline underline-offset-2 hover:opacity-70 transition-opacity"
+              style="color: var(--accent);"
+            >
+              GitHub &rarr;
+            </a>
+          )}
+          {project.blog && (
+            <a
+              href={project.blog}
+              class="underline underline-offset-2 hover:opacity-70 transition-opacity"
+              style="color: var(--accent);"
+            >
+              Blog Post &rarr;
+            </a>
+          )}
+        </div>
+      </div>
+    ))}
+  </div>
+</BaseLayout>

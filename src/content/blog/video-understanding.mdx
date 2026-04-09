@@ -1,0 +1,210 @@
+---
+title: "I Tested 12 AI Models on the Same Video. The Results Were Wild."
+description: "Native video, frame-based, open-weight, proprietary. One hallucinated. Four failed. Here's the full breakdown."
+date: 2026-03-29
+tags: ["ai", "ai-agents"]
+---
+
+## Native video, frame-based, open-weight, proprietary. One hallucinated. Four failed. Here's the full breakdown.
+
+---
+
+Everyone talks about multimodal AI. Few people actually test it. I wanted to know: if I give the same video to 12 different AI models and ask them all to do the same thing, what happens?
+
+So I ran the experiment.
+
+The task was straightforward: take a video, output timestamped segments with start time, end time, a description of what's happening, the activity type, and the mood. The kind of structured video understanding you'd need for a content recommendation engine, an editing tool, or an accessibility pipeline.
+
+The video was the Sintel trailer -- a 52.2-second, 1280x720 animated short with 5+ visually distinct scenes including action sequences, quiet character moments, and dramatic transitions. Rich enough to test whether models can actually *see* what's happening.
+
+I built a harness to run all 12 models through the same pipeline and evaluate them with the same metrics. This is the same Planner-Generator-Evaluator architecture I wrote about in my [previous article on harness design](https://medium.com/@jiazhenzhu/harness-design). Different domain, same pattern.
+
+---
+
+## The 12 Models
+
+I tested a mix of proprietary APIs, open-weight models, and specialized video platforms:
+
+**Proprietary (Google Gemini family):**
+- Gemini 2.5 Flash
+- Gemini 2.5 Flash Lite
+- Gemini 3 Flash
+- Gemini 3.1 Pro
+
+**Open-Weight:**
+- Qwen3-VL-32B (Alibaba)
+- Qwen3.6 Plus (Alibaba)
+- Llama 4 Scout (Meta)
+- Mistral Small 3.1
+
+**Specialized / Other:**
+- Twelve Labs (video-native API)
+- NVIDIA Nemotron
+- Gemma 3 (Google open-weight)
+- Kimi K2.5 (Moonshot AI)
+
+Same prompt. Same video. Same evaluation framework.
+
+---
+
+## Results: 8 Succeeded, 4 Failed
+
+Here's how the 8 successful models performed:
+
+**Gemini 2.5 Flash Lite -- The Winner**
+- 23 segments detected
+- 12.5 seconds processing time
+- $0.003 cost
+- Fastest model with the most granular segmentation. Strong temporal accuracy. Best overall value.
+
+**Gemini 2.5 Flash -- Best Descriptions**
+- 23 segments detected
+- 27.2 seconds processing time
+- $0.004 cost
+- Same segment count as Flash Lite but with richer, more detailed descriptions. Worth the extra 15 seconds if description quality matters.
+
+**Qwen3-VL-32B -- Best Open-Weight**
+- 17 segments detected
+- 45.7 seconds processing time
+- ~$0.01 cost (self-hosted estimate)
+- The strongest open-weight contender. Fewer segments than the Gemini models but solid accuracy. Real option for teams that need to self-host.
+
+**Gemini 3.1 Pro -- Best Narrative**
+- 5 segments detected
+- $0.019 cost
+- Only 5 segments, but each one reads like a director's commentary. Pro treats the video as a story, not a sequence of frames. Different granularity, different purpose.
+
+**Qwen3.6 Plus -- Best Free Option**
+- 6 segments detected
+- Completely free via API
+- Coarse segmentation but serviceable. If your budget is zero, this works.
+
+**Gemini 3 Flash**
+- Solid mid-tier performance. Reliable but outclassed by the 2.5 generation.
+
+**Llama 4 Scout**
+- Functional but minimal output. Frame-based approach limits its temporal awareness.
+
+**Mistral Small 3.1 -- The Hallucinator**
+- Produced output, so technically "succeeded." But the descriptions were fabricated. It described "smooth color transitions" and "gradient shifts" that never appeared in the video. Classic hallucination -- confident, structured, completely wrong.
+
+---
+
+## The 4 Failures
+
+**NVIDIA Nemotron** -- Hard limit of 10 images per request. A 52-second video needs more than 10 frames to understand. Architectural constraint, not a bug.
+
+**Gemma 3** -- Rate-limited during testing. Couldn't complete the evaluation. May work fine with retry logic.
+
+**Kimi K2.5** -- Returned an empty response. No error, no output, just silence.
+
+**Twelve Labs** -- Their video-native API returned data, but the response format didn't match the expected schema. Parsing failure on my end, not necessarily a model failure. With custom integration work, this could perform well.
+
+---
+
+## Key Finding 1: Native Video Beats Frame-Based
+
+This was the clearest signal in the data.
+
+Models that process video natively -- ingesting the actual video file rather than a series of extracted frames -- produced **1.7x more segments** and ran **2.3x faster** than frame-based approaches.
+
+Why? Because temporal information matters. A frame-based model sees a sequence of still images. It has to *infer* when scenes change, guess at motion, and reconstruct temporal relationships from spatial snapshots. A native video model sees the actual temporal signal -- motion, transitions, pacing.
+
+It's the difference between reading a novel and looking at random pages from that novel. You might piece together the plot from the pages, but you'll miss the rhythm, the transitions, and the connective tissue.
+
+The Gemini 2.5 models, which process video natively, consistently outperformed models that required frame extraction. This isn't just a speed advantage -- it's an accuracy advantage. Native models produce better temporal boundaries because they can actually see when things change.
+
+---
+
+## Key Finding 2: Granularity Is a Feature, Not a Bug
+
+Gemini 2.5 Flash Lite found 23 segments in a 52-second video. Gemini 3.1 Pro found 5.
+
+Both are correct. They're just answering different questions.
+
+Flash Lite is a **Taste Engine** -- it breaks video into fine-grained moments ideal for recommendation systems, search indexing, or content tagging. Every visual change gets its own segment.
+
+Pro is a **Narrative Composer** -- it identifies the story beats, the emotional arc, the thematic structure. Five segments that tell you what the video is *about*, not just what it *shows*.
+
+This matters for system design. If you're building a video search engine, you want Flash Lite's granularity. If you're building an automated video summary or a content brief generator, you want Pro's narrative intelligence.
+
+The mistake is treating segmentation as a single problem with a single right answer. Different downstream tasks need different granularity levels.
+
+---
+
+## Key Finding 3: Hallucination Is Real and Structured
+
+Mistral Small 3.1 didn't fail in an obvious way. It returned well-formatted JSON with proper timestamps, activity labels, and mood tags. Everything *looked* right.
+
+But the descriptions were fabricated. "Smooth color transitions between warm and cool tones." "Gradient shifts suggesting passage of time." These are plausible-sounding descriptions that have nothing to do with what actually happens in the Sintel trailer (which features a dragon chase, a fight scene, and a character walking through snow).
+
+This is the most dangerous kind of failure. A model that crashes or returns empty output is easy to catch. A model that returns confident, structured hallucinations requires ground-truth comparison to detect.
+
+This is exactly why the evaluation harness matters. Without automated comparison against reference segments, Mistral's output would have looked perfectly valid.
+
+---
+
+## The Harness: Planner-Generator-Evaluator
+
+I used the same three-stage architecture from my [harness design experiment](https://medium.com/@jiazhenzhu/harness-design):
+
+**Planner:** Defines the evaluation criteria, the metrics, and the ground-truth reference segments. Outputs a spec that the other stages consume.
+
+**Generator:** Runs each model against the video, collects structured output, normalizes the results into a common schema.
+
+**Evaluator:** Compares each model's output against the reference using three metrics:
+
+- **Temporal IoU** (Intersection over Union): How well do the predicted segment boundaries overlap with the ground truth? A segment that starts 2 seconds early and ends 3 seconds late gets penalized proportionally.
+
+- **Description Similarity**: Using sentence-transformers to compute embedding cosine similarity between predicted and reference descriptions. This captures semantic overlap even when the wording differs.
+
+- **Fuzzy Matching**: For activity and mood labels, fuzzy string matching handles cases where models use slightly different terminology ("action sequence" vs. "fight scene").
+
+All model outputs are cached as JSON. The evaluation is deterministic and reproducible. You can rerun the harness against new models without re-running the ones already tested.
+
+---
+
+## The Recommended Pipeline
+
+No single model does everything well. Here's the three-stage pipeline I'd recommend for production video understanding:
+
+**Stage 1: Fast Segmentation -- Gemini 2.5 Flash Lite**
+- Cost: $0.003 per video
+- Purpose: Break the video into fine-grained temporal segments with basic descriptions
+- Why: Fastest, cheapest, most granular. Gets you 80% of the way there.
+
+**Stage 2: Narrative Enrichment -- Gemini 3.1 Pro**
+- Cost: $0.019 per video
+- Purpose: Add story-level understanding, thematic labels, emotional arc
+- Why: Pro sees the forest, not just the trees. Layer its output on top of Flash Lite's segments.
+
+**Stage 3: Visual Feature Extraction -- Twelve Labs**
+- Cost: Variable (API pricing)
+- Purpose: Extract visual features, embeddings, and similarity scores for downstream search/recommendation
+- Why: Purpose-built for video. Once the parsing issues are resolved, this is the deepest video understanding layer.
+
+**Total estimated cost: ~$0.07 per minute of video.**
+
+For most applications, Stage 1 alone is sufficient. Add Stage 2 when you need narrative intelligence. Add Stage 3 when you need visual embeddings for search or recommendation.
+
+---
+
+## What This Means for Builders
+
+Video understanding is at an inflection point. A year ago, getting structured output from a video required specialized pipelines, custom models, and significant infrastructure. Today, you can get 23 timestamped segments from a 52-second video in 12.5 seconds for $0.003.
+
+But the landscape is fragmented. Models vary wildly in granularity, accuracy, speed, and failure modes. Some hallucinate. Some fail silently. Some are brilliant at narrative but terrible at fine-grained temporal segmentation.
+
+The answer isn't picking the "best" model. It's building a harness that uses the right model for the right purpose, with evaluation built in from the start.
+
+Same lesson as my harness design experiment: the model isn't the bottleneck. The architecture around it is.
+
+If you're building anything that processes video -- content moderation, recommendation, accessibility, editing tools, search -- start with a harness. Test multiple models. Measure with real metrics. And never trust a model's output without comparing it to ground truth.
+
+The video models are good enough. The question is whether your system around them is.
+
+---
+
+*Jiazhen Zhu has spent 10+ years building data and AI products at major tech companies, holds an MBA from NYU Stern, and serves as adjunct faculty teaching data courses at Northeastern University. He writes about AI productivity systems and the operational side of working with AI agents.*
+
+*For more experiments and frameworks like this, subscribe on [Substack](https://substack.com/@jiazhenzhu).*

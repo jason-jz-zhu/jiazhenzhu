@@ -6,7 +6,7 @@ export default {
     extend: {
       fontFamily: {
         sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
-        serif: ['Georgia', 'Cambria', 'serif'],
+        serif: ['Fraunces', 'Georgia', 'Cambria', 'serif'],
         mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
       },
       colors: {

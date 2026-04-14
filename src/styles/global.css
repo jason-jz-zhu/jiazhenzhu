@@ -4,11 +4,11 @@
 
 @layer base {
   :root {
-    --bg: #fafafa;
-    --bg-secondary: #f0f0f0;
+    --bg: #FAFAF7;
+    --bg-secondary: #F0EFE9;
     --text: #1a1a1a;
     --text-secondary: #666666;
-    --border: #e5e5e5;
+    --border: #e5e2da;
     --accent: #0D9488;
     --accent-light: #14B8A6;
   }
@@ -31,6 +31,8 @@
     background-color: var(--bg);
     color: var(--text);
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-size: 17px;
+    line-height: 1.7;
     transition: background-color 0.3s ease, color 0.3s ease;
   }
 
@@ -48,16 +50,18 @@
   .prose-custom h1,
   .prose-custom h2,
   .prose-custom h3 {
-    @apply font-semibold tracking-tight;
+    @apply font-bold tracking-tight;
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: 'opsz' 144;
     color: var(--text);
   }
 
-  .prose-custom h1 { @apply text-3xl mt-10 mb-4; }
-  .prose-custom h2 { @apply text-2xl mt-8 mb-3; }
-  .prose-custom h3 { @apply text-xl mt-6 mb-2; }
+  .prose-custom h1 { @apply text-4xl mt-12 mb-5; }
+  .prose-custom h2 { @apply text-3xl mt-10 mb-4; }
+  .prose-custom h3 { @apply text-2xl mt-8 mb-3; }
 
   .prose-custom p {
-    @apply my-4 leading-7;
+    @apply my-5 leading-8;
     color: var(--text);
   }
 

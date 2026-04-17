@@ -4,6 +4,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 <BaseLayout
   title="Orka — Jiazhen Zhu"
   description="Orka is a native macOS app that turns AI skills into visual, scheduled DAG workflows. SKILL.md is the cross-vendor open format; Orka is the management, execution, and observability layer."
+  image="/orka-icon.png"
   wide={true}
 >
   <a href="/lab" class="text-sm underline underline-offset-2 hover:opacity-70 transition-opacity" style="color: var(--text-secondary);">
@@ -11,7 +12,14 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   </a>
 
   <header class="mt-6 mb-8">
-    <div class="flex items-center gap-3 mb-4">
+    <div class="flex items-center gap-4 mb-4">
+      <img
+        src="/orka-icon.png"
+        alt="Orka logo"
+        width="72"
+        height="72"
+        class="rounded-2xl shrink-0"
+      />
       <h1 class="font-serif text-5xl sm:text-6xl font-bold tracking-tight">Orka</h1>
       <span
         class="text-xs px-2 py-0.5 rounded-full"

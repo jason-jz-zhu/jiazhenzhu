@@ -3,6 +3,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 const projects = [
   {
+    title: 'Orka',
+    description: 'Treats a pipeline as a composite skill — the DAG is the skill, written in SKILL.md (a cross-vendor open format). Author skills in any AI chat, and Orka becomes the management, execution, and observability layer: visual canvas, scheduling, Mac-native outputs (Apple Notes, iCloud, webhooks) that cloud tools cannot reach.',
+    tags: ['AI Agents', 'macOS', 'Tauri', 'Claude Code'],
+    page: '/lab/orka',
+    github: 'https://github.com/jason-jz-zhu/orka',
+    status: 'WIP',
+  },
+  {
     title: 'JobAgent',
     description: 'AI agent that finds jobs, tailors your resume, and prepares a complete application package — in 3 minutes per app. Uses Claude Code + MCP servers for job scraping, JD analysis, and expert-guided resume rewriting.',
     tags: ['AI Agents', 'Career', 'Claude Code'],
@@ -56,6 +64,15 @@ const projects = [
           ))}
         </div>
         <div class="flex gap-4 text-sm">
+          {project.page && (
+            <a
+              href={project.page}
+              class="underline underline-offset-2 hover:opacity-70 transition-opacity"
+              style="color: var(--accent);"
+            >
+              View Project &rarr;
+            </a>
+          )}
           {project.github && (
             <a
               href={project.github}
